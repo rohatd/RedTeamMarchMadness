@@ -1,51 +1,58 @@
 import pandas as pd
 
-def getHeaders(dataFile):
-    fLine = dataFile.readline()
-    headers = fLine.strip().split(",")
-    fLine = dataFile.readline()
-    headers2 = fLine.strip().split(",")
-    
-    for i in range(0,len(headers)):
-        headers[i] = headers[i] + " " + headers2[i]
-    return headers
 
-def deleteHeaders(filename):
-    for i in range(0,2):
-        with open(filename, 'r') as fin:
-            data = fin.read().splitlines(True)
-        with open(filename, 'w') as fout:
-            fout.writelines(data[1:])
+def parseCSV(filename):
+    rawData = pd.read_csv(filename, header=[1])
+    return rawData
 
-def loadData(headers,fileName):
-    dataTable = pd.read_csv(fileName, 
-                  sep=',', 
-                  names=list(headers))
-    return dataTable
+# Functions to alter our initial raw dataframe, for any reason #######
 
-def readFile(dataFile,fileName):
-    headers = getHeaders(dataFile)
-    deleteHeaders(fileName)
-    return loadData(headers,fileName),headers
+def removeCol(dataframe, colName=""):
+    # Remove the specified column, otherwise remove the first column in the dataframe
+    res = dataframe.copy()
+    if colName == "":
+        res = res.drop(res.columns[[0]], axis=1)
+        # res = res.drop(res.columns[[0]], axis=1, inplace=True)
+    else:
+        try:
+            res = res.pop(colName)
+        except:
+            print("Error in removeCol(): Check spelling of column name.")
+    return res
+
+def removeHeader(dataframe):
+    # Reshapes the DF to remove the header strings.
+    res = dataframe.copy()
+    res.columns = range(res.shape[1])
+    return res
+
+
 
 def main():
 
     year = 2019
 
-    basicSchoolCSV = '{}basicdata.txt'.format(str(year))
-    advSchoolCSV =  '{}advdata.txt'.format(str(year))
+    # Dataframes with headers.  Indexing is not based on rank, as rank begins at 1.
 
-    #read 2019 basic school stats csv,return df with all info
-    dataFile = open(basicSchoolCSV, 'r') 
-    basicSchoolStatsDF,basicHeaders = readFile(dataFile,basicSchoolCSV)
+    # Read 2019 basic school stats csv, return DF with all info
+    rawBasic = parseCSV("raw_basicschool_2018_2019.csv")
+    # Read 2019 advanced school stats.
+    rawAdv = parseCSV("raw_advschool_2018_2019.csv")
 
-    #read 2019 adv school stats csv,return df with all info
-    dataFile = open(advSchoolCSV, 'r') 
-    advSchoolStatsDF,advHeaders = readFile(dataFile,advSchoolCSV)
+    print(rawBasic)
+    print(rawAdv)
 
+    # Test DF alterations
+    """
+    noCol = removeCol(rawBasic)
+    print("Rank should be missing.")
+    print(noCol)
 
-    print(basicSchoolStatsDF)
-    print(advSchoolStatsDF)
+    noHead = removeHeader(rawBasic)
+    print("Header should be missing.")
+    print(noHead)
+
+    """
     #percentilesOfWiner = {}
     #get percentile of winner for each statistic
     #for i in basicHeaders:
