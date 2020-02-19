@@ -1,8 +1,5 @@
 import pandas as pd
-from team import Team
-from seasondata import SeasonData
-from matchup import Matchup
-from bracket import Bracket
+from seasondata import *
 
 def parse_csv(filename):
     rawData = pd.read_csv(filename, header=[1])
