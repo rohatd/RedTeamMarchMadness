@@ -1,5 +1,6 @@
 import pandas as pd
 from team import Team
+from seasondata import SeasonData
 
 def parse_csv(filename):
     rawData = pd.read_csv(filename, header=[1])
@@ -60,7 +61,9 @@ def main():
     """
     print("\nTEAM INIT TEST:")
     teamRow = rawBasic.loc[0,:]
-    a = teamRow['School']
+    teamName = teamRow['School']
+    teamName = teamName[:-5]
+    coachRow = rawCoaches.loc[rawCoaches['School'] == teamName]
     coach = rawCoaches.iat[0,0]
     # Verify school
     school = rawCoaches.iat[0,1]
@@ -72,6 +75,12 @@ def main():
     print("num_wins():", abilene.num_wins())
     print("print_team_data():")
     abilene.print_team_data()
+    """
+    # SeasonData tests
+    """
+    sd = SeasonData(2019, rawCoaches, rawBasic)
+    akron = sd.get_team("Akron")
+    print(akron.print_team_data())
     """
 
     #percentilesOfWiner = {}
