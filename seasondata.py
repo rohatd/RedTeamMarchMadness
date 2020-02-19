@@ -1,4 +1,5 @@
 from team import Team
+from matchup import Matchup
 
 class SeasonData:
 
@@ -6,8 +7,11 @@ class SeasonData:
         # Ensure arguments are in order Coach, Basic, Advanced.  All optional for init
         self.teams = {}
         self.year = year
-#        self.matchups = []
+        self.matchups = []
+        self.bracket = None  # Initial bracket is blank
+
         if (coach_df is not None) and (bas_df is not None):
+            # If dataframes are passed, initialize teams.
             # TODO: accommodate adv_df
             self.initialize_teams(coach_df, bas_df)
 
@@ -29,9 +33,32 @@ class SeasonData:
         # teamRow created from basic dataframe.
         return 0
 
-#    def form_matchup(team_a, team_b):
-#        return 0
-
+    # Getters
     def get_team(self, teamName):
         # Returns Team object
         return self.teams[teamName]
+
+    def get_matchups(self):
+        # Returns stored list of matchups, to be used however.
+        # Likely as init arg to form Bracket object.
+        return self.matchups
+
+    # Mutators (Add / Remove)
+    def new_matchup(self, team1, team2):
+        # Params can be team objects or team names.
+        if isinstance(team1, str):
+            team1 = self.get_team(team1)
+        if isinstance(team2, str):
+            team2 = self.get_team(team2)
+        self.add_matchup(Matchup(team1, team2))
+
+
+    def add_matchup(self, matchup):
+        self.matchups.append(matchup)
+        print("New matchup added:", matchup.team1.get_team_name(), "&", matchup.team2.get_team_name())
+    # Evaluations
+    def matchup_result(self, matchup, alg=None):
+        # Default arg for alg is None.  Once we pick a default algorithm, it should
+        # be that one
+        winner = matchup.predictWinner(alg)
+        return winner.get_team_name()
