@@ -60,6 +60,4 @@ class Team:
     # Display functions
     def print_team_data(self):
         print(self.team_data)
-        return 0
-
-    
+        

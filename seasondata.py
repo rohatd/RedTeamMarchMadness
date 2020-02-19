@@ -2,14 +2,14 @@ from team import Team
 
 class SeasonData:
 
-    def __init__(self, year, coach_df, bas_df):
+    def __init__(self, year, coach_df=None, bas_df=None, adv_df=None):
         # Ensure arguments are in order Coach, Basic, Advanced.  All optional for init
         self.teams = {}
         self.year = year
 #        self.matchups = []
-        # if (coach_df is not None) and (bas_df is not None):
+        if (coach_df is not None) and (bas_df is not None):
             # TODO: accommodate adv_df
-        self.initialize_teams(coach_df, bas_df)
+            self.initialize_teams(coach_df, bas_df)
 
     def initialize_teams(self, coach_df, bas_df, adv_df=None):
         # Iterate through adv and basic data frames to fill

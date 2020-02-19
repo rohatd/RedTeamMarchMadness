@@ -77,11 +77,11 @@ def main():
     abilene.print_team_data()
     """
     # SeasonData tests
-    """
+    sdp = SeasonData(2018)
     sd = SeasonData(2019, rawCoaches, rawBasic)
     akron = sd.get_team("Akron")
     print(akron.print_team_data())
-    """
+
 
     #percentilesOfWiner = {}
     #get percentile of winner for each statistic
