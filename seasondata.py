@@ -1,5 +1,6 @@
 from team import Team
 from matchup import Matchup
+from bracket import *
 
 class SeasonData:
 
@@ -7,7 +8,7 @@ class SeasonData:
         # Ensure arguments are in order Coach, Basic, Advanced.  All optional for init
         self.teams = {}
         self.year = year
-        self.matchups = []
+        self.matchups = Queue()
         self.bracket = None  # Initial bracket is blank
 
         if (coach_df is not None) and (bas_df is not None):
@@ -46,16 +47,21 @@ class SeasonData:
     # Mutators (Add / Remove)
     def new_matchup(self, team1, team2):
         # Params can be team objects or team names.
+        # Creates a new matchup and adds it to the queue.
         if isinstance(team1, str):
             team1 = self.get_team(team1)
         if isinstance(team2, str):
             team2 = self.get_team(team2)
         self.add_matchup(Matchup(team1, team2))
 
-
     def add_matchup(self, matchup):
-        self.matchups.append(matchup)
+        # Adds a matchup to matchup queue.
+        self.matchups.put(matchup)
         print("New matchup added:", matchup.team1.get_team_name(), "&", matchup.team2.get_team_name())
+
+    def new_bracket(self):
+        self.bracket = Bracket(self.matchups)
+
     # Evaluations
     def matchup_result(self, matchup, alg=None):
         # Default arg for alg is None.  Once we pick a default algorithm, it should
