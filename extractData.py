@@ -25,8 +25,7 @@ def remove_header(dataframe):
     res = dataframe.copy()
     res.columns = range(res.shape[1])
     return res
-
-
+  
 
 def main():
 
