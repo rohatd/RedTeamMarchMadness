@@ -1,5 +1,5 @@
 import pandas as pd
-
+from team import Team
 
 def parseCSV(filename):
     rawData = pd.read_csv(filename, header=[1])
@@ -38,10 +38,14 @@ def main():
     rawBasic = parseCSV("raw_basicschool_2018_2019.csv")
     # Read 2019 advanced school stats.
     rawAdv = parseCSV("raw_advschool_2018_2019.csv")
-    
-    print(rawBasic)
-    print(rawAdv)
+    rawCoaches = parseCSV("raw_coaches_2018_2019.csv")
 
+    """
+    print("BASIC DATA")
+    print(rawBasic, "\nADVANCED DATA")
+    print(rawAdv, "\nCOACH INFO")
+    print(rawCoaches)
+    """
     # Test DF alterations
     """
     noCol = removeCol(rawBasic)
@@ -51,8 +55,25 @@ def main():
     noHead = removeHeader(rawBasic)
     print("Header should be missing.")
     print(noHead)
-
     """
+    # Test team initialization
+    """
+    print("\nTEAM INIT TEST:")
+    teamRow = rawBasic.loc[0,:]
+    a = teamRow['School']
+    coach = rawCoaches.iat[0,0]
+    # Verify school
+    school = rawCoaches.iat[0,1]
+
+    abilene = Team(2019, teamRow, coach)
+    print("get_team_name():", abilene.get_team_name())
+    print("get_coach():", abilene.get_coach())
+    print("num_games():", abilene.num_games())
+    print("num_wins():", abilene.num_wins())
+    print("print_team_data():")
+    abilene.print_team_data()
+    """
+    
     #percentilesOfWiner = {}
     #get percentile of winner for each statistic
     #for i in basicHeaders:
