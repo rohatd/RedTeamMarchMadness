@@ -30,6 +30,7 @@ function showText(data) {
   // TODO: Parse data JSON
   document.getElementById("teamName").innerHTML = "Team: " + data.team;
   document.getElementById("year").innerHTML = "Year: " + data.year;
+  document.getElementById("coach").innerHTML = "Coach: " + data.coach;
   document.getElementById("numGames").innerHTML = "Number of games: " + data.numGames;
   document.getElementById("numWins").innerHTML = "Number of wins: " + data.numWins;
   document.getElementById("numLosses").innerHTML = "Number of losses: " + data.numLosses;

@@ -1,6 +1,7 @@
 from team import Team
 from matchup import Matchup
 from bracket import *
+from extractData import *
 
 class SeasonData:
 
@@ -24,12 +25,19 @@ class SeasonData:
         for i in range(numTeams):
             teamRow = bas_df.loc[i,:]
             teamName = teamRow['School']
+
             # Trim 'NCAA' from the name
             if "NCAA" in teamName:
                 teamName = teamName[:-5]
+
             # Get coach info
             coachRow = coach_df.loc[coach_df['School'] == teamName]
             coachName = coachRow['Coach']
+            try:
+                coachName = coachName.tolist()[0]
+            except:
+                coachName = ""
+
             self.teams[teamName] = Team(self.year, teamRow, coachName)
         # TODO: accommodate advanced info dataframe by combining it with
         # teamRow created from basic dataframe.

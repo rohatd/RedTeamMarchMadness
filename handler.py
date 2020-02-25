@@ -36,7 +36,7 @@ def main_interface():
     response = {}
     response["team"] = str(teamName)
     response["year"] = str(team.get_year())
-    # response["coach"] = str(team.get_coach())
+    response["coach"] = str(team.get_coach())
     # This returns a coach object, not a string.  Why tho
     response["numGames"] = str(team.num_games())
     response["numWins"] = str(team.num_wins())
