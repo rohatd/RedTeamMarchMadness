@@ -27,6 +27,7 @@ class SeasonData:
             # Trim 'NCAA' from the name
             if "NCAA" in teamName:
                 teamName = teamName[:-5]
+            # Get coach info
             coachRow = coach_df.loc[coach_df['School'] == teamName]
             coachName = coachRow['Coach']
             self.teams[teamName] = Team(self.year, teamRow, coachName)
