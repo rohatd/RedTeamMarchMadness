@@ -1,0 +1,84 @@
+.fa-1x {
+font-size: 1.5rem;
+}
+.navbar-toggler.toggler-example {
+cursor: pointer;
+}
+
+.light-blue-text {
+color: #66FCF1;
+}
+
+.dark-text {
+color: #0B0C10;
+font-family: "Oxygen", sans-serif;
+font-weight: bold;
+}
+
+
+body{
+  background: #0B0C10;
+}
+
+.navbar{
+  background-image: linear-gradient(90deg, #FFFFFF 80%, #1f2833 20%);
+}
+
+.navbar-brand{
+padding-left: 150px;
+padding-right: 100px;
+color: #66FCF1;
+}
+
+.navbar-text{
+color: #0B0C10;
+}
+
+.nav-link{
+color: #0B0C10 !important;
+font-family: "Oxygen", sans-serif;
+}
+
+i {
+  border: solid #66FCF1;
+  border-width: 0 7px 7px 0;
+  display: inline-block;
+  padding: 8px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+
+
+
+
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+
+
+
+
