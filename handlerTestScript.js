@@ -40,8 +40,8 @@ function initSeasonData() {
   });
 }
 
+// TODO: Simplify / generalize these showText functions.
 function showText(data) {
-  // TODO: Parse data JSON
   document.getElementById("teamName").innerHTML = "Team: " + data.team;
   document.getElementById("year").innerHTML = "Year: " + data.year;
   document.getElementById("coach").innerHTML = "Coach: " + data.coach;
