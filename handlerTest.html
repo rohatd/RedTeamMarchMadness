@@ -2,24 +2,36 @@
 <html>
   <head>
     <title>Handler Test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="handlerTestScript.js"></script>
   </head>
 
   <body>
-    <div id="title">
+    <h2>March Madness: Message Handler Test</h2>
+    <p>Make sure handler.py is running and listening, via "$ flask run"</p>
+    <div id="teamView">
+      <div id="team1">
+        Enter a team name: <input id="message">
+        <button id="send">Send</button>
+        <p id="teamName"></p>
+        <p id="year"></p>
+        <p id="coach"></p>
+        <p id="numGames"></p>
+        <p id="numWins"></p>
+        <p id="numLosses"></p>
 
-      <h2>March Madness: Message Handler Test</h2>
-      <p>Make sure handler.py is running and listening, via "$ flask run"</p>
-      Enter a team name: <input id="message">
-      <button id="send">Send</button>
-      <p id="teamName"></p>
-      <p id="year"></p>
-      <p id="coach"></p>
-      <p id="numGames"></p>
-      <p id="numWins"></p>
-      <p id="numLosses"></p>
-
+      </div>
+      <div id="team2">
+        Enter a second team name: <input id="message2">
+        <button id="send2">Send</button>
+        <p id="teamName2"></p>
+        <p id="year2"></p>
+        <p id="coach2"></p>
+        <p id="numGames2"></p>
+        <p id="numWins2"></p>
+        <p id="numLosses2"></p>
+      </div>
     </div>
   </body>
 </html>

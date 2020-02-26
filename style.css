@@ -1,0 +1,11 @@
+#teamView {
+  display: flex;
+}
+
+#team1 {
+  flex: 0 0 40%;
+}
+
+#team2 {
+  flex: 1;
+}
