@@ -5,25 +5,25 @@ from extractData import *
 
 class SeasonData:
 
-    def __init__(self, year, coach_df=None, bas_df=None, adv_df=None):
+    def __init__(self, year, coach_df=None, basic_df=None, adv_df=None):
         # Ensure arguments are in order Coach, Basic, Advanced.  All optional for init
         self.teams = {}
         self.year = year
         self.matchups = Queue()
         self.bracket = None  # Initial bracket is blank
 
-        if (coach_df is not None) and (bas_df is not None):
+        if (coach_df is not None) and (basic_df is not None):
             # If dataframes are passed, initialize teams.
             # TODO: accommodate adv_df
-            self.initialize_teams(coach_df, bas_df)
+            self.initialize_teams(coach_df, basic_df)
 
-    def initialize_teams(self, coach_df, bas_df, adv_df=None):
+    def initialize_teams(self, coach_df, basic_df, adv_df=None):
         # Iterate through adv and basic data frames to fill
         # out team informations into Team objects, stored in
         # self.teams
-        numTeams = bas_df.shape[0]
+        numTeams = basic_df.shape[0]
         for i in range(numTeams):
-            teamRow = bas_df.loc[i,:]
+            teamRow = basic_df.loc[i,:]
             teamName = teamRow['School']
 
             # Trim 'NCAA' from the name
