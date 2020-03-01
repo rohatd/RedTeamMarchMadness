@@ -1,0 +1,53 @@
+#teamView {
+  display: flex;
+}
+
+#team1 {
+  flex: 0 0 40%;
+}
+
+#team2 {
+  flex: 1;
+}
+
+h2{
+	padding-top: 75px;
+	color: #66FCF1;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+	font-size: 65px;
+
+}
+
+.text-center{
+	text-align: center;
+}
+
+p{
+	color: white;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+
+}
+
+h3{
+	color: white;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+	text-align: center;
+	font-size: 20px;
+
+}
+
+.team2{
+	text-align: center;
+}
+input.message {
+	text-align: center;
+}
+
+button{
+	text-align: center;
+}
+
+
