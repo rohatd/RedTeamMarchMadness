@@ -26,7 +26,7 @@ def remove_header(dataframe):
     res.columns = range(res.shape[1])
     return res
 
-def createSeasonData():
+def create_season_data():
     # Creates a SeasonData object using 2018 - 2019 season data.
     # We can later take arguments that determine the specific season.
 
@@ -81,7 +81,7 @@ def main():
     """
     # SeasonData tests
     sdp = SeasonData(2018)
-    sd = createSeasonData()
+    sd = create_season_data()
     akron = sd.get_team("Akron")
     print(akron.print_team_data())
     # Matchup integration tests

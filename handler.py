@@ -14,7 +14,7 @@ def init_sd():
     res = "SD load failure"
     global SD
     try:
-        SD = createSeasonData()
+        SD = create_season_data()
         res = "SD load success"
     except:
         print("handler.py: Something went wrong initializing SeasonData.")
