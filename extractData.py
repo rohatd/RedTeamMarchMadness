@@ -25,19 +25,24 @@ def remove_header(dataframe):
     res = dataframe.copy()
     res.columns = range(res.shape[1])
     return res
-  
 
-def main():
-
-    year = 2019
-
-    # Dataframes with headers.  Indexing is not based on rank, as rank begins at 1.
+def createSeasonData():
+    # Creates a SeasonData object using 2018 - 2019 season data.
+    # We can later take arguments that determine the specific season.
 
     # Read 2019 basic school stats csv, return DF with all info
     rawBasic = parse_csv("raw_basicschool_2018_2019.csv")
     # Read 2019 advanced school stats.
     rawAdv = parse_csv("raw_advschool_2018_2019.csv")
     rawCoaches = parse_csv("raw_coaches_2018_2019.csv")
+    sd = SeasonData(2019, rawCoaches, rawBasic)
+    return sd
+
+def main():
+
+    year = 2019
+
+    # Dataframes with headers.  Indexing is not based on rank, as rank begins at 1.
 
     """
     print("BASIC DATA")
@@ -50,7 +55,6 @@ def main():
     noCol = remove_col(rawBasic)
     print("Rank should be missing.")
     print(noCol)
-
     noHead = remove_header(rawBasic)
     print("Header should be missing.")
     print(noHead)
@@ -65,7 +69,6 @@ def main():
     coach = rawCoaches.iat[0,0]
     # Verify school
     school = rawCoaches.iat[0,1]
-
     abilene = Team(2019, teamRow, coach)
     print("get_team_name():", abilene.get_team_name())
     print("get_coach():", abilene.get_coach())
@@ -76,7 +79,7 @@ def main():
     """
     # SeasonData tests
     sdp = SeasonData(2018)
-    sd = SeasonData(2019, rawCoaches, rawBasic)
+    sd = createSeasonData()
     akron = sd.get_team("Akron")
     print(akron.print_team_data())
     # Matchup integration tests
