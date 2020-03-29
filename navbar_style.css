@@ -6,7 +6,7 @@ cursor: pointer;
 }
 
 .light-blue-text {
-color: #66FCF1;
+color: #8C0000;
 }
 
 .dark-text {
@@ -17,7 +17,7 @@ font-weight: bold;
 
 
 body{
-  background: #0B0C10;
+  background: white;
 }
 
 .navbar{
@@ -25,9 +25,9 @@ body{
 }
 
 .navbar-brand{
-padding-left: 150px;
-padding-right: 100px;
-color: #66FCF1;
+  padding-left: 150px;
+  padding-right: 100px;
+  color: #8C0000;
 }
 
 .navbar-text{
@@ -40,7 +40,7 @@ font-family: "Oxygen", sans-serif;
 }
 
 i {
-  border: solid #66FCF1;
+  border: solid #8C0000;
   border-width: 0 7px 7px 0;
   display: inline-block;
   padding: 8px;
@@ -74,11 +74,3 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
-
-
-
-
-
-
-
-

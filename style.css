@@ -12,7 +12,7 @@
 
 h2{
 	padding-top: 75px;
-	color: #66FCF1;
+	color: #8C0000;
 	font-family: "Oxygen", sans-serif;
 	font-weight: bold;
 	font-size: 65px;
@@ -24,7 +24,6 @@ h2{
 }
 
 p{
-	color: white;
 	font-family: "Oxygen", sans-serif;
 	font-weight: bold;
 
@@ -39,8 +38,23 @@ h3{
 
 }
 
-.team2{
-	text-align: center;
+#team1 {
+  padding: 5px;
+  border-radius: 25px;
+  background-color: #C47676;
+}
+
+#team2 {
+  padding: 5px;
+  border-radius: 25px;
+  background-color: #C47676;
+}
+
+.teamInfo {
+  background-color: #ABABAB;
+  border-radius: 25px;
+  margin: 10px;
+  color: white;
 }
 input.message {
 	text-align: center;
@@ -49,5 +63,3 @@ input.message {
 button{
 	text-align: center;
 }
-
-
