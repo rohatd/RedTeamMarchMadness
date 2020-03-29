@@ -45,7 +45,7 @@
             <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">GENERATE BRACKET</a>
+            <a class="nav-link" href="generateBracket.html">GENERATE BRACKET</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">STATS</a>
@@ -54,41 +54,40 @@
       </div>
     </nav>
 
-
-
-    <h2 class="text-center">TEAM COMPARE</h2>
+    <h2 class="text-center">COMPARE TEAMS</h2>
 
     <!--Entering Teams-->
+
     <div id="teamView">
       <div class="container">
         <div class="row">
           <div class="col text-center">
             <div id="team1">
               <h3>ENTER TEAM 1: </h3> <input id="message">
-              <button id="send">Send</button>
-              <p id="teamName"></p>
-              <p id="year"></p>
-              <p id="coach"></p>
-              <p id="numGames"></p>
-              <p id="numWins"></p>
-              <p id="numLosses"></p>
+              <button onclick="document.getElementById('T1stats').style.display='block'">Send</button>
+              <div id= "T1stats">
+                <p id="coach">Coach:</p>
+                <p id="numGames">Total Games:</p>
+                <p id="numWins">Wins:</p>
+                <p id="numLosses">Losses:</p>
+              </div>
             </div>
           </div>
 
           <div class="col text-center">
             <div id="team2">
               <h3>ENTER TEAM 2: </h3> <input id="message2">
-              <button id="send2">Send</button>
-              <p id="teamName2"></p>
-              <p id="year2"></p>
-              <p id="coach2"></p>
-              <p id="numGames2"></p>
-              <p id="numWins2"></p>
-              <p id="numLosses2"></p>
+              <button onclick="document.getElementById('T2stats').style.display='block'">Send</button>
+              <div id= "T2stats">
+                <p id="coach">Coach:</p>
+                <p id="numGames">Total Games:</p>
+                <p id="numWins">Win %:</p>
+              </div>
             </div>
           </div>
-        </div>   
+        </div>
       </div>
-    </div>
+
+
   </body>
 </html>
