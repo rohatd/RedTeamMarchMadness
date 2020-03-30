@@ -1,0 +1,48 @@
+h2{
+	padding-top: 75px;
+	color: #8C0000;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+	font-size: 65px;
+}
+
+h3{
+	color: #8C0000;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+	font-size: 65px;
+}
+
+p{
+	padding-top: 60px;
+	color: white;
+	font-family: "Oxygen", sans-serif;
+	font-weight: bold;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50em;
+
+}
+
+.butt {
+    border: 2px solid #8C0000;
+    background-color: #CECECE;
+    color: black;
+    height:75px;
+    width:215px;
+    display: inline-block;
+    cursor:pointer;
+    border-radius: 12px;
+}
+
+.butt:hover {
+   background-color: #8C0000 ;
+   color: white;
+}
+
+.wrapper{
+	padding-top: 25px;
+	text-align: center;
+}
+
