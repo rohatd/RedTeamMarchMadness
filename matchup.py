@@ -1,3 +1,10 @@
+import random
+import pandas as pd
+from sportsreference.ncaab.schedule import Schedule
+from sklearn.ensemble import RandomForestRegressor
+
+
+
 
 class Matchup:
 
@@ -46,7 +53,16 @@ class Matchup:
         model.fit(X_train, y_train)
         
         #predict outcome of game based of season statistics for both teams
-        print(model.predict(X_test).astype(int))
+        team1score,team2score = model.predict(X_test).astype(int)
+        
+        if(team1score > team2score):
+            return self.team1
+        else if (team1score ==  team2score):
+            return random.choice([self.team1,self.team2])
+        else:
+            return self.team2
+        
+        
         
 
 
