@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>March Madness</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="styling/navbar_style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styling/homepage_style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar sticky-top">
+
+<div>
+  <!-- Collapse button -->
+	<button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="light-blue-text"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+
+ 	<span class="dark-text">
+    	MENU
+ 	</span>
+
+</div>
+
+    <!-- Navbar brand -->
+<div class="navbar-header">
+	<i class="arrow right"></i>
+	<i class="arrow right"></i>
+
+	<a class="navbar-brand" href="#page-right">Logo</a>
+</div>
+
+  <!-- Collapsible content -->
+<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+    <!-- Links -->
+	<ul class="navbar-nav mr-auto">
+    	<li class="nav-item active">
+        	<a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="#">GENERATE BRACKET</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="#">STATS</a>
+      	</li>
+        <li class="nav-item">
+          <a class="nav-link" href="handlerTest.html">TEAM COMPARE</a>
+        </li>
+    </ul>
+    <!-- Links -->
+</div>
+  <!-- Collapsible content -->
+
+</nav>
+
+
+
+<!-- Homepage Content  -->
+
+<h2 class="text-center">MARCH MADNESS</h2>
+<h3 class="text-center">BRACKET</h3>
+
+
+<p>View competing school statistics by year, or use algorithmic comparison to help you form a March Madness bracket or compute a team more likely to win against another head-to-head.</p>
+
+<!--Generate Bracket Button -->
+<!-- for right now will link to team comparison page, but change once we implement the bracket -->
+
+<div class="butt-wrapper">
+  <a href="generateBracket.html">
+    <input class="butt" type="button" value="GENERATE BRACKET">
+  </a>
+	<a href="handlerTest.html">
+    <input class="butt" type="button" value="HEAD-TO-HEAD">
+  </a>
+	<a href="">
+    <input class="butt" type="button" value="VIEW STATS">
+  </a>
+</div>
+
+</body>
+</html>
