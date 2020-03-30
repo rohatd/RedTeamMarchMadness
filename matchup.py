@@ -15,7 +15,7 @@ class Matchup:
 
     def getWinner(self):
         return self.team1
-    
+
     def randomForestRegressor(self,year):
         '''
         Things to do still:
@@ -29,17 +29,17 @@ class Matchup:
         #pull in the scores for all games played in a certain season for both teams
         team1_schedule = Schedule(team1.get_team_name(),year)
         team2_schedule = Schedule(team2.get_team_name(),year)
-        
+
         #compile into one dataset
         dataset = pd.concat([team1_schedule.dataframe_extended, team2_schedule.dataframe_extended])
-        
+
         #create training sets from dataset
         X_train = dataset.drop(FIELDS_TO_DROP, 1).dropna().drop_duplicates()
         Y_train = dataset[['home_points', 'away_points']].values
-        
+
         #create the x test (need to create method)
         X_test  = team1.get_attributes() + team2.get_attributes
-        
+
         #parameters for model (could use tweaking to improve accuracy in the future)
         parameters = {'bootstrap': False,
                     'min_samples_leaf': 3,
@@ -51,19 +51,19 @@ class Matchup:
         model = RandomForestRegressor(**parameters)
         #train model using the season data
         model.fit(X_train, y_train)
-        
+
         #predict outcome of game based of season statistics for both teams
         team1score,team2score = model.predict(X_test).astype(int)
-        
+
         if(team1score > team2score):
             return self.team1
-        else if (team1score ==  team2score):
+        elif (team1score ==  team2score):
             return random.choice([self.team1,self.team2])
         else:
             return self.team2
-        
-        
-        
+
+
+
 
 
 
