@@ -6,7 +6,7 @@ cursor: pointer;
 }
 
 .light-blue-text {
-color: #66FCF1;
+color: #8C0000;
 }
 
 .dark-text {
@@ -17,17 +17,17 @@ font-weight: bold;
 
 
 body{
-  background: #0B0C10;
+  background: #CECECE;
 }
 
 .navbar{
-  background-image: linear-gradient(90deg, #FFFFFF 80%, #1f2833 20%);
+  background-image: linear-gradient(90deg, #FFFFFF 80%, #0B0B0B 20%);
 }
 
 .navbar-brand{
-padding-left: 150px;
-padding-right: 100px;
-color: #66FCF1;
+  padding-left: 150px;
+  padding-right: 100px;
+  color: #8C0000;
 }
 
 .navbar-text{
@@ -40,7 +40,7 @@ font-family: "Oxygen", sans-serif;
 }
 
 i {
-  border: solid #66FCF1;
+  border: solid #8C0000;
   border-width: 0 7px 7px 0;
   display: inline-block;
   padding: 8px;
@@ -50,7 +50,6 @@ i {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
-
 
 
 
