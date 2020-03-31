@@ -1,5 +1,7 @@
 from queue import Queue
 from matchup import Matchup
+import json
+
 
 
 class Bracket:
@@ -12,6 +14,9 @@ class Bracket:
 
     def printQueue(self):
         print(self.matchupQueue)
+
+    def get_teams(self):
+        return json.dummps(list(self.matchupQueue.queue))
 
     def evaluateBracket(self):
         while len(self.matchupQueue) != 1:
