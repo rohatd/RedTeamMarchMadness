@@ -56,7 +56,7 @@ class Team:
     def get_attribute(self, param):
         # Argument 'param' should be a string of an attribute name.
         return self.team_data[param]
-
+        
     # Display functions
     def print_team_data(self):
         print(self.team_data)

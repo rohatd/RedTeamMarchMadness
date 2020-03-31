@@ -75,15 +75,15 @@ def main():
     abilene.print_team_data()
     """
     # SeasonData tests
-    sdp = SeasonData(2018)
-    sd = SeasonData(2019, rawCoaches, rawBasic)
-    akron = sd.get_team("Akron")
-    print(akron.print_team_data())
+    # sdp = SeasonData(2018)
+    # sd = SeasonData(2019, rawCoaches, rawBasic)
+    # akron = sd.get_team("Akron")
+    # print(akron.print_team_data())
     # Matchup integration tests
-    sd.new_matchup("Akron", "Wyoming")
-    xyMatch = Matchup(sd.get_team("Xavier"), sd.get_team("Yale"))
-    sd.add_matchup(xyMatch)
-    print(sd.matchup_result(xyMatch, "alg1"))
+    # sd.new_matchup("Akron", "Wyoming")
+    # xyMatch = Matchup(sd.get_team("Xavier"), sd.get_team("Yale"))
+    # sd.add_matchup(xyMatch)
+    # print(sd.matchup_result(xyMatch, "alg1"))
 
     #percentilesOfWiner = {}
     #get percentile of winner for each statistic
