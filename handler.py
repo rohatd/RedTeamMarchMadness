@@ -2,7 +2,7 @@
 # Make sure you export the flask path: "$ export FLASK_APP=handler.py"
 # Reference: https://medium.com/@gokhang1327/separate-front-end-from-back-end-with-flask-ajax-a5b22b12d001
 from flask import Flask, request, jsonify
-from extractData import *
+from seasondata import *
 import json
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def init_sd():
     res = "SD load failure"
     global SD
     try:
-        SD = createSeasonData()
+        SD = SeasonData(2019, "raw_coaches_2018_2019.csv", "raw_basicschool_2018_2019.csv", "raw_advschool_2018_2019.csv")
         res = "SD load success"
     except:
         print("handler.py: Something went wrong initializing SeasonData.")
