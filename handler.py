@@ -1,7 +1,7 @@
 # Flask message handler
 # Make sure you export the flask path: "$ export FLASK_APP=handler.py"
 # Reference: https://medium.com/@gokhang1327/separate-front-end-from-back-end-with-flask-ajax-a5b22b12d001
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from seasondata import *
 import json
 
@@ -41,6 +41,7 @@ def main_interface():
     response["numGames"] = str(team.num_games())
     response["numWins"] = str(team.num_wins())
     response["numLosses"] = str(team.num_losses())
+    # return make_response(jsonify(response), 200)
     return jsonify(response)
 
 @app.after_request
