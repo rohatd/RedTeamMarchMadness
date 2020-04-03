@@ -1,6 +1,8 @@
 $("document").ready(function(){
     initSeasonData()
     // Send message for first team information.
+
+
     $("#send").click(function(){
         var message = $("#message").val();
         $.ajax({
@@ -34,7 +36,7 @@ function initSeasonData() {
   $.ajax({
       url: "http://localhost:5000/api/init/",
       type: "POST",
-      data: JSON.stringify({"handler.py, init_sd()": message})
+      data: JSON.stringify({"marchMadness.py, init_sd()": message})
   }).done(function(data) {
       console.log(data);
   });

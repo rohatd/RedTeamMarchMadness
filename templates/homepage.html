@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h2 class="text-center">MARCH MADNESS</h2>
+	<h3 class="text-center">BRACKET</h3>
+
+
+	<h4>View competing school statistics by year, or use algorithmic comparison to help you form a March Madness bracket or compute a team more likely to win against another head-to-head.</h4>
+
+	<!--Generate Bracket Button -->
+
+	<div class="butt-wrapper">
+	  <a href="/generate-bracket">
+	    <input class="butt" type="button" value="GENERATE BRACKET">
+	  </a>
+		<a href="/team-compare">
+	    <input class="butt" type="button" value="HEAD-TO-HEAD">
+	  </a>
+		<a href="">
+	    <input class="butt" type="button" value="VIEW STATS">
+	  </a>
+	</div>
+{% endblock content %}
