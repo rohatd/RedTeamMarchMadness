@@ -1,12 +1,23 @@
-# Flask message handler
-# Make sure you export the flask path: "$ export FLASK_APP=handler.py"
-# Reference: https://medium.com/@gokhang1327/separate-front-end-from-back-end-with-flask-ajax-a5b22b12d001
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, render_template, url_for, request, jsonify
 from seasondata import *
 import json
 
 app = Flask(__name__)
-SD = None
+SD =None
+
+@app.route("/")
+@app.route("/home")
+def home():
+	return render_template('homepage.html')
+
+@app.route("/team-compare")
+def teamCompare():
+	return render_template('teamCompare.html')
+
+@app.route("/generate-bracket")
+def generateBracket():
+	return render_template('generateBracket.html')
+
 
 @app.route('/api/init/', methods=["GET", "POST"])
 def init_sd():
@@ -41,7 +52,6 @@ def main_interface():
     response["numGames"] = str(team.num_games())
     response["numWins"] = str(team.num_wins())
     response["numLosses"] = str(team.num_losses())
-    # return make_response(jsonify(response), 200)
     return jsonify(response)
 
 @app.after_request
@@ -50,5 +60,6 @@ def add_headers(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     return response
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
