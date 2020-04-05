@@ -5,6 +5,7 @@ import json
 app = Flask(__name__)
 SD =None
 
+# Individual page routes
 @app.route("/")
 @app.route("/home")
 def home():
@@ -17,6 +18,10 @@ def teamCompare():
 @app.route("/generate-bracket")
 def generateBracket():
 	return render_template('generateBracket.html')
+
+@app.route("/stats")
+def stats():
+	return render_template('stats.html')
 
 
 @app.route('/api/init/', methods=["GET", "POST"])

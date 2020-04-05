@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h5 class="text-center">STATS</h5>
+
+  <!--Entering Team-->
+    <div id="teamView">
+      <div class="container">
+        <div class="row">
+
+          <div class="col text-center">
+
+            <div id="team1">
+              <h6>ENTER TEAM 1: </h6> <input id="getStats">
+              <button id="statQuery">Get Stats</button>
+              <div class="teamInfo">
+                <p id="teamName"></p>
+                <p id="year"></p>
+                <p id="coach"></p>
+                <p id="numGames"></p>
+                <p id="numWins"></p>
+                <p id="numLosses"></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+{% endblock content %}

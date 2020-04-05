@@ -42,24 +42,23 @@
 
     <!-- Navbar brand -->
     <div class="navbar-header">
-      <i class="arrow right"></i>
-      <i class="arrow right"></i>
-
-      <a class="navbar-brand" href="/home">Red Team</a>
+      <a class="navbar-brand" href="/home">
+        <img src="{{ url_for('static', filename='logo.png')}}" width="30" height="30" alt="Red Team">
+      </a>
     </div>
 
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
     <!-- Links -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item activse">
+        <li class="nav-item active">
           <a class="nav-link" href="/home">HOME</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/generate-bracket">GENERATE BRACKET <span class="sr-only"></span> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">STATS</a>
+          <a class="nav-link" href="/stats">STATS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/team-compare">TEAM COMPARE</a>
