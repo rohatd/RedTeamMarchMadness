@@ -42,9 +42,9 @@ class SeasonData:
                 # Trim 'NCAA' from the name
                 if "NCAA" in teamName:
                     teamName = teamName[:-5]
-                coachRow = coach_df.loc[coach_df['School'] == teamName]
-                coachName = coachRow['Coach']
-                self.teams[teamName] = Team(self.year, teamRow, coachName)
+                # Get coach data (single row corresponding to school name.)
+                coachRow = coach_df.loc[coach_df['School'] == teamName].squeeze()
+                self.teams[teamName] = Team(self.year, teamRow, coachRow)
             # TODO: accommodate advanced info dataframe by combining it with
             # teamRow created from basic dataframe.
 

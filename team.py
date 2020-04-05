@@ -2,11 +2,11 @@
 
 class Team:
 
-    def __init__(self, year, team_data, coach):
+    def __init__(self, year, team_data, coach_data):
         self.year = year
         # team_data is a row from our DF
         self.team_data = team_data
-        self.coach = coach
+        self.coach_data = coach_data
 
     # Getters
     def get_team_name(self):
@@ -16,7 +16,10 @@ class Team:
         return self.year
 
     def get_coach(self):
-        return self.coach
+        return self.coach_data['Coach']
+
+    def get_coach_data(self):
+        return self.coach_data
 
     def num_games(self):
         return self.team_data['G']
@@ -60,4 +63,3 @@ class Team:
     # Display functions
     def print_team_data(self):
         print(self.team_data)
-        
