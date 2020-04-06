@@ -10,15 +10,20 @@
           <div class="col text-center">
 
             <div id="team1">
-              <h6>ENTER TEAM 1: </h6> <input id="getStats">
+              <h6>Enter a Team Name or Season Year: </h6> <input id="statInput">
               <button id="statQuery">Get Stats</button>
-              <div class="teamInfo">
-                <p id="teamName"></p>
-                <p id="year"></p>
-                <p id="coach"></p>
-                <p id="numGames"></p>
-                <p id="numWins"></p>
-                <p id="numLosses"></p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="statTeamTitle"></p>
+                  <table class="table table-sm table-bordered" id="team-stat-table">
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <p id="statCoachTitle"></p>
+                  <table class="table table-bordered" id="coach-stat-table">
+                  </table>
+                </div>
+
               </div>
             </div>
           </div>

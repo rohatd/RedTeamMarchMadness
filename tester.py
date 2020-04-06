@@ -11,9 +11,7 @@ def seasondata_test():
     print("tester.py: SeasonData initialization successful.")
     akron = sd.get_team("Akron")
     print("tester.py: get_team successful.")
-    print(akron.team_data, isinstance(akron.team_data, pd.DataFrame))
-
-    print(akron.get_coach(), isinstance(akron.get_coach(), pd.DataFrame))
+    print(akron.stats_json())
 
 
 def main():
