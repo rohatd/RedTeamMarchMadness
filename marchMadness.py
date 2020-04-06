@@ -26,18 +26,16 @@ def stats():
 # Request Handling
 @app.route('/api/init/', methods=["GET", "POST"])
 def init_sd():
-	# Stores SeasonData object in global var SD
-	year = 2019
-	response = {}
-	response["year"] = year
-	response["message"] = "SD load failure"
-	global SD
-	try:
-		SD = SeasonData(year, "raw_coaches_2018_2019.csv", "raw_basicschool_2018_2019.csv", "raw_advschool_2018_2019.csv")
-		response["message"] = "SD load success"
-	except:
-		print("handler.py: Something went wrong initializing SeasonData.")
-	return response
+    # Stores SeasonData object in global var SD
+    res = "SD load failure"
+    global SD
+    try:
+        SD = SeasonData(2019, "raw_coaches_2018_2019.csv",
+                        "raw_basicschool_2018_2019.csv", "raw_advschool_2018_2019.csv")
+        res = "SD load success"
+    except:
+        print("handler.py: Something went wrong initializing SeasonData.")
+    return res
 
 @app.route('/api/message/', methods=["POST"])
 def main_interface():
@@ -60,10 +58,6 @@ def main_interface():
 	response["numWins"] = str(team.num_wins())
 	response["numLosses"] = str(team.num_losses())
 	return jsonify(response)
-
-
-# @app.route('/api/get-winner', methods=["POST"])
-# def getWinner(team1, team2):
 
 
 
