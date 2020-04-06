@@ -28,8 +28,9 @@ body{
 }
 
 .navbar-brand{
-  padding-left: 150px;
-  padding-right: 100px;
+
+  padding-top: 0px;
+  padding-bottom: 0px;
   color: #8C0000;
 }
 

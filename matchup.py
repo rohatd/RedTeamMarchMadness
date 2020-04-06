@@ -12,15 +12,18 @@ class Matchup:
 
 
     def getWinner(self):
-        return RandomForestRegressor(2018)
+        return 0
+        #return RandomForestRegressor(2018)
 
 
     def randomForestRegressor(self,year):
+
+
         '''
-        Things to do still:
-            -Implement X_test information method
-        '''
-        #fields brought in by sports reference api that we don't want
+        # Things to do still:
+        #     -Implement X_test information method
+        # '''
+        # #fields brought in by sports reference api that we don't want
         FIELDS_TO_DROP = ['away_points', 'home_points', 'date', 'location',
                   'losing_abbr', 'losing_name', 'winner', 'winning_abbr',
                   'winning_name', 'home_ranking', 'away_ranking', 'away_defensive_rebounds',
@@ -40,6 +43,7 @@ class Matchup:
 
         #create the x test (need to create method)
         X_test  = get_regeressor_info(team1,team2)#team1.get_attributes() + team2.get_attributes
+        print("HELLLOOO")
 
         #parameters for model (could use tweaking to improve accuracy in the future)
         parameters = {'bootstrap': False,
@@ -48,10 +52,12 @@ class Matchup:
                     'min_samples_split': 10,
                     'max_features': 'sqrt',
                     'max_depth': 6}
+
         #create model
         model = RandomForestRegressor(**parameters)
         #train model using the season data
         model.fit(X_train, y_train)
+
 
         #predict outcome of game based of season statistics for both teams
         print(model.predict(X_test).astype(int))

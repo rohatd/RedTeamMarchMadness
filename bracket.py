@@ -24,5 +24,6 @@ class Bracket:
             team2 = self.matchupQueue.popleft()
             teamMatchup = Matchup(team1,team2)
             winner = teamMatchup.getWinner()
+
             self.matchupQueue.append(winner)
             print("{0} played {1} and the winner is: {2}".format(team1,team2,winner))
