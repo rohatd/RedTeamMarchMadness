@@ -1,3 +1,5 @@
+var year;
+
 $("document").ready(function(){
     initSeasonData()
 
@@ -30,8 +32,8 @@ $("document").ready(function(){
     });
 
     // Send query for Stats page.
-    $("#statQuery").click(funtion(){
-      let statQuery = $("statInput").val();
+    $("#statQuery").click(function(){
+      let statQuery = $("#statInput").val();
       $.ajax({
         url: "http://localhost:5000/api/get-stats/",
         type: "POST",
@@ -50,10 +52,10 @@ function initSeasonData() {
   $.ajax({
       url: "http://localhost:5000/api/init/",
       type: "POST",
-      data: JSON.stringify({"marchMadness.py, init_sd()": message})
+      data: JSON.stringify({"marchMadness.py, init_sd()": "Template Message"})
   }).done(function(data) {
       console.log(data);
-      setYear(data);
+      year = data.year
   });
 }
 
@@ -79,10 +81,26 @@ function showText2(data) {
 
 // Set year to display for Team Comparison page.
 function setYear(data) {
-  document.getElementById("season-year").innerHTML += data.year;
+  document.getElementById("season-year").innerHTML += year;
 }
 
 // Show the stats on the Stats page
-function showStats(data) {
-
+function showStats(data){
+  let team_data = data["Team"];
+  let coach_data = data["Coach"];
+  // Construct the tables
+  let teamtable = "";
+  let coachtable = "";
+  for (let key in team_data){
+    let value = team_data[key];
+    teamtable = teamtable + "<tr><th>" + key + "</th><td>" + value + "</td></tr>";
+  }
+  for (let key in coach_data){
+    let value = coach_data[key];
+    coachtable = coachtable + "<tr><th>" + key + "</th><td>" + value + "</td></tr>";
+  }
+  document.getElementById("statTeamTitle").innerHTML = "Team";
+  document.getElementById("statCoachTitle").innerHTML = "Coach";
+  document.getElementById("team-stat-table").innerHTML = teamtable;
+  document.getElementById("coach-stat-table").innerHTML = coachtable;
 }

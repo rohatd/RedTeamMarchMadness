@@ -66,19 +66,20 @@ def getStats():
 	input = request.get_json()
 	query = input["query"]
 	print("Stats query received:", input)
-
+	"""
 	# Differentiate between a query for season, or team (TODO)
 	if any(char.isdigit() for char in query):
 		# If query contains digits, probably a season year query, e.g. "2019"
-		continue
+
 	else:
-		# Otherwise, a team name
-		try:
-			team = SD.get_team(query)
-		except:
-			return jsonify({"/api/get-stats": "Team name query failed to load."})
-		return jsonify(team.stats_json())
-		
+		"""
+	# Otherwise, a team name
+	try:
+		team = SD.get_team(query)
+	except:
+		return jsonify({"/api/get-stats": "Team name query failed to load."})
+	return jsonify(team.stats_json())
+
 
 
 @app.after_request

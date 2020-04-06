@@ -109,10 +109,16 @@ class Team:
 
     def get_attribute(self, param):
         # Argument 'param' should be a string of an attribute name.
-        return str(self.team_data[param])
+        val = self.team_data[param]
+        if isinstance(val, float):
+            val = '%.3f'%(val)
+        return str(val)
 
     def get_coach_attribute(self, param):
-        return str(self.coach_data[param])
+        val = self.coach_data[param]
+        if isinstance(val, float):
+            val = '%.3f'%(val)
+        return str(val)
 
     def stats_json(self, response={}):
         # Constructs a dictionary to be converted into a JSON object to return to frontend (for Stats).
