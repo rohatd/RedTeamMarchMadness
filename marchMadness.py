@@ -61,6 +61,12 @@ def main_interface():
 	response["numLosses"] = str(team.num_losses())
 	return jsonify(response)
 
+
+# @app.route('/api/get-winner', methods=["POST"])
+# def getWinner(team1, team2):
+
+
+
 @app.route('/api/get-stats/', methods=["POST"])
 def getStats():
 	input = request.get_json()
