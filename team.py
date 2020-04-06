@@ -1,55 +1,4 @@
-teamVocab = {  "Rk" : "Rank",
-               "School" : "School",
-               "G" : "Total Games",
-               "W" : "Overall Wins",
-               "L" : "Overall Losses",
-               "W-L%" : "Win-Loss Percentage",
-               "SRS" : "Simple Rating System",
-               "SOS" : "Strength of Schedule",
-               "W.1" : "Conference Wins",
-               "L.1" : "Conference Losses",
-               "W.2" : "Home Wins",
-               "L.2" : "Home Losses",
-               "W.3" : "Away Wins",
-               "L.3" : "Away Losses",
-               "Tm." : "Sum Team Points",
-               "Opp." : "Sum Opponent Points",
-               "MP" : "Minutes Played",
-               "FG" : "Field Goals",
-               "FGA" : "Field Goal Attempts",
-               "FG%" : "Field Goal Percentage",
-               "3P" : "3-Pointers Made",
-               "3PA" : "3-Point Average",
-               "3P%" : "3-Point Percentage",
-               "FT" : "Free Throws",
-               "FTA" : "Free Throw Attempts",
-               "FT%" : "Free Throw Percentage",
-               "ORB" : "Offensive Rebounds",
-               "TRB" : "Total Rebounds",
-               "AST" : "Assists",
-               "STL" : "Steals",
-               "BLK" : "Blocks",
-               "TOV" : "Turnovers",
-               "PF" : "Personal Fouls" }
 
-coachVocab = { "Coach" : "Coach",
-               "School" : "School",
-               "Conference" : "Conference",
-               "Since" : "School Career Start",
-               "W.1" : "Current School Wins",
-               "L.1" : "Current School Losses",
-               "W-L%.1" : "Win-Loss Percentage",
-               "NCAA" : "NCAA",
-               "S16" : "S16",
-               "FF" : "FF",
-               "Chmp" : "Championships at Current School",
-               "W.2" : "Career Overall Wins",
-               "L.2" : "Career Overall Losses",
-               "W-L%.1" : "Career Win-Loss Percentage",
-               "NCAA.1" : "Career Overall NCAA",
-               "S16.1" : "Overall S16",
-               "FF.1" : "Overall FF",
-               "Chmp.1" : "Total Career Championships"}
 
 class Team:
 
@@ -109,46 +58,7 @@ class Team:
 
     def get_attribute(self, param):
         # Argument 'param' should be a string of an attribute name.
-        val = self.team_data[param]
-        if isinstance(val, float):
-            val = '%.3f'%(val)
-        return str(val)
-
-    def get_coach_attribute(self, param):
-        val = self.coach_data[param]
-        if isinstance(val, float):
-            val = '%.3f'%(val)
-        return str(val)
-
-    def stats_json(self, response={}):
-        # Constructs a dictionary to be converted into a JSON object to return to frontend (for Stats).
-        # Should include coach info as well.
-        def lookup(data, spec):
-            if spec == "coach":
-                vocab = coachVocab
-            else:
-                vocab = teamVocab
-            try:
-                for key in vocab:
-                    entry = vocab[key]
-                    if spec == "coach":
-                        res = self.get_coach_attribute(key)
-                    else:
-                        res = self.get_attribute(key)
-                    if res == "nan":
-                        res = "N/A"
-                    data[entry] = res
-            except:
-                print("team.py: stats_json() ... Error looking up entries for", spec, "vocabulary")
-                return None
-
-        teamData = {}
-        coachData = {}
-        lookup(teamData, "team")
-        lookup(coachData, "coach")
-        response["Team"] = teamData
-        response["Coach"] = coachData
-        return response
+        return self.team_data[param]
 
     # Display functions
     def print_team_data(self):

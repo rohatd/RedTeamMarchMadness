@@ -17,7 +17,6 @@ class SeasonData:
         # Load data files
         try:
             coach_df = pd.read_csv(coach_file, header=[1])
-            coach_df = coach_df.drop(["W", "L", "W-L%", "AP Pre", "AP Post", "NCAA Tournament"], axis=1)
         except:
             print("Error loading coach data csv.")
         try:

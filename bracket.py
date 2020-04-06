@@ -1,4 +1,4 @@
-from queue import Queue
+from Queue import Queue
 from matchup import Matchup
 import json
 

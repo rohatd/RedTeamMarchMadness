@@ -1,10 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h5 class="text-center">TEAM COMPARE</h5>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+	<h5 class="text-center" id="test">TEAM COMPARE</h5>
 	<script>setYear();</script>
 	<h6 id="season-year">Season Year: </h6>
     <!--Entering Teams-->
-    <div id="teamView">
+		<div id="teamView">
       <div class="container">
         <div class="row">
 
@@ -28,7 +36,7 @@
 
             <div id="team2">
               <h6>ENTER TEAM 2: </h6> <input id="message2">
-              <button id="send2">Send</button>
+              <button onclick="myFunction()" id="send2">Send</button>
               <div class="teamInfo">
                 <p id="teamName2"></p>
                 <p id="year2"></p>
@@ -36,10 +44,62 @@
                 <p id="numGames2"></p>
                 <p id="numWins2"></p>
                 <p id="numLosses2"></p>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
+			<div class="col text-center">
+
+				<div id="team1">
+					<h6>WINNER: </h6>
+					<div class="teamInfo">
+						<label for="alg">Choose winner based on:</label>
+
+						<select id="alg" onsubmit="displayWinner()">
+							<option value="" disabled selected>Select</option>
+						  <option value="wins">Wins</option>
+						  <option value="losses">Losses</option>
+						</select>
+						<button onclick="displayWinner()">Submit</button>
+						<script>
+							function displayWinner() {
+							if ($("#alg :selected").text() == "Wins") {
+								var team1 = document.getElementById("numWins").innerHTML;
+								var team1Wins = parseInt(team1.substr(team1.length - 2));
+
+								var team2 = document.getElementById("numWins2").innerHTML;
+								var team2Wins = parseInt(team2.substr(team2.length - 2));
+
+								if (team1Wins > team2Wins) {
+									document.getElementById("winner").innerHTML = document.getElementById("teamName").innerHTML;
+								}
+								else {
+									document.getElementById("winner").innerHTML = document.getElementById("teamName2").innerHTML;
+								}
+							}
+							else {
+								var team1 = document.getElementById("numLosses").innerHTML;
+								var team1Losses = parseInt(team1.substr(team1.length - 2));
+
+								var team2 = document.getElementById("numLosses").innerHTML;
+								var team2Losses = parseInt(team2.substr(team2.length - 2));
+
+								if (team1Losses > team2Losses) {
+									document.getElementById("winner").innerHTML = document.getElementById("teamName").innerHTML;
+								}
+								else {
+									document.getElementById("winner").innerHTML = document.getElementById("teamName2").innerHTML;
+								}
+							}
+						}
+						</script>
+						<h6 id="winner"></h6>
+					</div>
+				</div>
+			</div>
     </div>
-{% endblock content %}
+		<script src="../static/teamNames.js" charset="utf-8"></script>
+    </body>
+  </html>
+  {% endblock content %}
