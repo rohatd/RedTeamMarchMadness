@@ -1,10 +1,9 @@
 $("document").ready(function(){
     initSeasonData()
+
     // Send message for first team information.
-
-
     $("#send").click(function(){
-        var message = $("#message").val();
+        let message = $("#message").val();
         $.ajax({
             url: "http://localhost:5000/api/message/",
             type: "POST",
@@ -18,7 +17,7 @@ $("document").ready(function(){
 
     // Send message for second team information.
     $("#send2").click(function(){
-      var message2 = $("#message2").val();
+      let message2 = $("#message2").val();
       $.ajax({
         url: "http://localhost:5000/api/message/",
         type: "POST",
@@ -30,8 +29,23 @@ $("document").ready(function(){
       });
     });
 
+    // Send query for Stats page.
+    $("#statQuery").click(funtion(){
+      let statQuery = $("statInput").val();
+      $.ajax({
+        url: "http://localhost:5000/api/get-stats/",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({"query": statQuery})
+      }).done(function(data) {
+        console.log(data);
+        showStats(data);
+      });
+    });
+
 });
 
+// Initialize the (most recent) SeasonData object, primarily for team comparison
 function initSeasonData() {
   $.ajax({
       url: "http://localhost:5000/api/init/",
@@ -39,6 +53,7 @@ function initSeasonData() {
       data: JSON.stringify({"marchMadness.py, init_sd()": message})
   }).done(function(data) {
       console.log(data);
+      setYear(data);
   });
 }
 
@@ -60,4 +75,14 @@ function showText2(data) {
   document.getElementById("numGames2").innerHTML = "Number of games: " + data.numGames;
   document.getElementById("numWins2").innerHTML = "Number of wins: " + data.numWins;
   document.getElementById("numLosses2").innerHTML = "Number of losses: " + data.numLosses;
+}
+
+// Set year to display for Team Comparison page.
+function setYear(data) {
+  document.getElementById("season-year").innerHTML += data.year;
+}
+
+// Show the stats on the Stats page
+function showStats(data) {
+
 }
