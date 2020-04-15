@@ -37,6 +37,7 @@
 
 #rd4 {
   padding-top: 350px;
+  padding-left: 20px;
   float: left;
 }
 
@@ -53,6 +54,7 @@
 }
 
 #cMatchup {
+  margin: auto;
   display: block;
   text-align: center;
   border: 1px solid black;
