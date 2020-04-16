@@ -54,7 +54,7 @@ class Matchup:
                 #'away_two_point_field_goals' : away.get_attribute('AST')],
                 'away_win_percentage' : [away.get_attribute('W-L%_x')],
                 'away_wins' : [away.get_attribute('W_x')],
-                'home_assist_percentage' : [home.get_attribute('AST%')],
+                'home_assist_percentage' : [home.get_attribute("AST%")],
                 'home_assists' : [home.get_attribute('AST')],
                 'home_block_percentage' : [home.get_attribute('BLK%')],
                 'home_blocks' : [home.get_attribute('BLK')],

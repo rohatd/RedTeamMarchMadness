@@ -20,7 +20,7 @@ def seasondata_test():
 
 
 def test():
-        
+
     coach_file = "raw_coaches_2018_2019.csv"
     basic_file = "raw_basicschool_2018_2019.csv"
     adv_file = "raw_advschool_2018_2019.csv"
@@ -48,6 +48,8 @@ def test():
     Houston = sd.get_team("Houston")
     Tennessee = sd.get_team("Tennessee")
     Oregon = sd.get_team("Oregon")
+
+    #Oregon.print_team_data()
 
     teamList = []
     teamList.append(FloridaState)
