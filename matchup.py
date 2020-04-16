@@ -16,7 +16,8 @@ class Matchup:
 
 
     def getWinner(self):
-        return RandomForestRegressor(2018)
+        return 0
+        #return RandomForestRegressor(2018)
 
     def get_regeressor_info(self,home,away):
         data = {'away_assist_percentage' : [away.get_attribute("AST%")],
@@ -94,8 +95,18 @@ class Matchup:
 
 
     def randomForestRegressor(self,year):
+<<<<<<< HEAD
         #print("in random forest regressor")
         #fields brought in by sports reference api that we don't want
+=======
+
+
+        '''
+        # Things to do still:
+        #     -Implement X_test information method
+        # '''
+        # #fields brought in by sports reference api that we don't want
+>>>>>>> 20a3a45f33b83ba30f70aef18720785c676d52b9
         FIELDS_TO_DROP = ['away_points', 'home_points', 'date', 'location',
                   'losing_abbr', 'losing_name', 'winner', 'winning_abbr',
                   'winning_name', 'home_ranking', 'away_ranking', 'away_defensive_rebounds',
@@ -130,12 +141,18 @@ class Matchup:
         Y_train_1 = dataset_1[['home_points','away_points']]
         Y_train_2 = dataset_2[['home_points','away_points']]
 
+<<<<<<< HEAD
         #print('created training sets')
         #pd.DataFrame(X_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\X_train.xlsx', index=False)
         #pd.DataFrame(Y_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\Y_train.xlsx', index=False)
 
         while(len(X_train_1) != len(Y_train_1)):
             Y_train_1 = Y_train_1[:-1]
+=======
+        #create the x test (need to create method)
+        X_test  = get_regeressor_info(team1,team2)#team1.get_attributes() + team2.get_attributes
+        print("HELLLOOO")
+>>>>>>> 20a3a45f33b83ba30f70aef18720785c676d52b9
 
         while(len(X_train_2) != len(Y_train_2)):
             Y_train_2 = Y_train_2[:-1]
@@ -151,6 +168,7 @@ class Matchup:
         #print(X_train)
         #print(X_test)
         #parameters for model (could use tweaking to improve accuracy in the future)
+<<<<<<< HEAD
 
         parameters = {
             'bootstrap': True,
@@ -159,6 +177,15 @@ class Matchup:
             'min_samples_leaf': 50,
             'min_samples_split': 12,
             'n_estimators': 100}
+=======
+        parameters = {'bootstrap': False,
+                    'min_samples_leaf': 3,
+                    'n_estimators': 50,
+                    'min_samples_split': 10,
+                    'max_features': 'sqrt',
+                    'max_depth': 6}
+
+>>>>>>> 20a3a45f33b83ba30f70aef18720785c676d52b9
         #create model
         model_1 = RandomForestRegressor(**parameters)
         model_2 = RandomForestRegressor(**parameters)
@@ -174,6 +201,7 @@ class Matchup:
 
         model_1.fit(X_train_1, Y_train_1)
         model_2.fit(X_train_2, Y_train_2)
+
 
         #predict outcome of game based of season statistics for both teams
         spread_1 = model_1.predict(X_test_1).astype(int)

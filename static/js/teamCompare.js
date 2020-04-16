@@ -16,7 +16,7 @@ $("document").ready(function(){
             showText(data);
         });
     });
-
+ 
     // Send message for second team information.
     $("#send2").click(function(){
       let message2 = $("#message2").val();

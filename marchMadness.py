@@ -5,6 +5,21 @@ import json
 app = Flask(__name__)
 SD =None
 
+
+# Request Handling
+@app.route('/api/init/', methods=["GET", "POST"])
+def init_sd():
+    # Stores SeasonData object in global var SD
+    res = "SD load failure"
+    global SD
+    try:
+        SD = SeasonData(2019, "raw_coaches_2018_2019.csv",
+                        "raw_basicschool_2018_2019.csv", "raw_advschool_2018_2019.csv")
+        res = "SD load success"
+    except:
+        print("handler.py: Something went wrong initializing SeasonData.")
+    return res
+
 # Individual page routes
 @app.route("/")
 @app.route("/home")
@@ -17,27 +32,16 @@ def teamCompare():
 
 @app.route("/generate-bracket")
 def generateBracket():
-	return render_template('generateBracket.html')
+	teams = []
+	for i in range(0, 63):
+		teams.append(i*10)
+	print(teams)
+	return render_template('generateBracket.html', teams= teams)
 
 @app.route("/stats")
 def stats():
 	return render_template('stats.html')
 
-# Request Handling
-@app.route('/api/init/', methods=["GET", "POST"])
-def init_sd():
-	# Stores SeasonData object in global var SD
-	year = 2019
-	response = {}
-	response["year"] = year
-	response["message"] = "SD load failure"
-	global SD
-	try:
-		SD = SeasonData(year, "raw_coaches_2018_2019.csv", "raw_basicschool_2018_2019.csv", "raw_advschool_2018_2019.csv")
-		response["message"] = "SD load success"
-	except:
-		print("handler.py: Something went wrong initializing SeasonData.")
-	return response
 
 @app.route('/api/message/', methods=["POST"])
 def main_interface():
@@ -61,6 +65,8 @@ def main_interface():
 	response["numLosses"] = str(team.num_losses())
 	return jsonify(response)
 
+
+
 @app.route('/api/get-stats/', methods=["POST"])
 def getStats():
 	input = request.get_json()
@@ -81,12 +87,18 @@ def getStats():
 	return jsonify(team.stats_json())
 
 
-
 @app.after_request
 def add_headers(response):
 	response.headers.add('Access-Control-Allow-Origin', '*')
 	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 	return response
+
+@app.route('/api/get-teams', methods=["POST"])
+def getTeams():
+	try:
+		teams = SD.getTeams()
+	except:
+		return jsonify({"/api/get-teams": "Fail"})
 
 
 if __name__ == "__main__":

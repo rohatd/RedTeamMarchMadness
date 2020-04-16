@@ -11,11 +11,19 @@
 }
 
 #matchup {
-  display: block;
   text-align: center;
-  border: 1px solid black;
-  width: 135px;
+  width: 90px;
   height: 70px;
+}
+
+#team {
+  display: block;
+  background-color: white;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin: auto;
+  border-bottom: 3px solid #eee;
 }
 
 #rd1 {
@@ -24,40 +32,38 @@
 }
 
 #rd2 {
-  padding-top: 60px;
+  padding-top: 50px;
   padding-left: 20px;
   float: left;
 }
 
 #rd3 {
-  padding-top: 160px;
+  padding-top: 145px;
   padding-left: 20px;
   float: left;
 }
 
 #rd4 {
-  padding-top: 350px;
+  padding-top: 340px;
+  padding-left: 20px;
   float: left;
 }
 
 #finalFour {
-  padding-top: 800px;
+  padding-top: 700px;
   padding-left: 20px;
   float: left;
 }
 
 #champion {
-  padding-top: 725px;
+  padding-top: 600px;
   padding-left: 20px;
   float: left;
 }
 
 #cMatchup {
-  display: block;
+  margin: auto;
   text-align: center;
-  border: 1px solid black;
-  width: 150px;
-  height: 150px;
 }
 
 #popUp {
@@ -69,33 +75,30 @@
 }
 
 h5{
-	padding-top: 75px;
-	color: #8C0000;
-	font-family: "Oxygen", sans-serif;
-	font-weight: bold;
-	font-size: 65px;
+  padding-top: 75px;
+  color: #8C0000;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 65px;
 
 }
 
 .text-center{
-	text-align: center;
-}
-hr{
-  color: white;
+  text-align: center;
 }
 
 p{
-	font-family: "Oxygen", sans-serif;
-	font-weight: bold;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
 
 }
 
 h6{
-	color: white;
-	font-family: "Oxygen", sans-serif;
-	font-weight: bold;
-	text-align: center;
-	font-size: 20px;
+  color: white;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
 
 }
 
@@ -118,9 +121,9 @@ h6{
   color: white;
 }
 input.message {
-	text-align: center;
+  text-align: center;
 }
 
 button{
-	text-align: center;
+  text-align: center;
 }
