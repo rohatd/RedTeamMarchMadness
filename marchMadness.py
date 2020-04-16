@@ -1,9 +1,12 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from seasondata import *
+from bracket import *
+from collections import deque
 import json
 
 app = Flask(__name__)
 SD =None
+B = None
 
 
 # Request Handling
@@ -32,9 +35,19 @@ def teamCompare():
 
 @app.route("/generate-bracket")
 def generateBracket():
-	teams = []
-	for i in range(0, 63):
-		teams.append(i*10)
+
+	teamList = deque()
+	file = open("64.txt", 'r')
+	for l in file:
+		teamList.append(l)
+	global B
+
+	try:
+		B = Bracket(teamList)
+	except: 
+		print("bracket: something went wrong.")
+
+	teams = B.getBracket()
 	print(teams)
 	return render_template('generateBracket.html', teams= teams)
 
