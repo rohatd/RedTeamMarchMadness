@@ -8,7 +8,7 @@ class SeasonData:
     def __init__(self, year, coach_file, basic_file, adv_file):
         self.teams = {}
         self.year = year
-        self.matchups = Queue()
+        self.matchups = []
         self.bracket = None  # Initial bracket is blank
 
         coach_df = None
