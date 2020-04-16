@@ -5,23 +5,6 @@ import json
 app = Flask(__name__)
 SD =None
 
-# Individual page routes
-@app.route("/")
-@app.route("/home")
-def home():
-	return render_template('homepage.html')
-
-@app.route("/team-compare")
-def teamCompare():
-	return render_template('teamCompare.html')
-
-@app.route("/generate-bracket")
-def generateBracket():
-	return render_template('generateBracket.html')
-
-@app.route("/stats")
-def stats():
-	return render_template('stats.html')
 
 # Request Handling
 @app.route('/api/init/', methods=["GET", "POST"])
@@ -36,6 +19,29 @@ def init_sd():
     except:
         print("handler.py: Something went wrong initializing SeasonData.")
     return res
+
+# Individual page routes
+@app.route("/")
+@app.route("/home")
+def home():
+	return render_template('homepage.html')
+
+@app.route("/team-compare")
+def teamCompare():
+	return render_template('teamCompare.html')
+
+@app.route("/generate-bracket")
+def generateBracket():
+	teams = []
+	for i in range(0, 63):
+		teams.append(i*10)
+	print(teams)
+	return render_template('generateBracket.html', teams= teams)
+
+@app.route("/stats")
+def stats():
+	return render_template('stats.html')
+
 
 @app.route('/api/message/', methods=["POST"])
 def main_interface():
@@ -81,12 +87,18 @@ def getStats():
 	return jsonify(team.stats_json())
 
 
-
 @app.after_request
 def add_headers(response):
 	response.headers.add('Access-Control-Allow-Origin', '*')
 	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 	return response
+
+@app.route('/api/get-teams', methods=["POST"])
+def getTeams():
+	try:
+		teams = SD.getTeams()
+	except:
+		return jsonify({"/api/get-teams": "Fail"})
 
 
 if __name__ == "__main__":
