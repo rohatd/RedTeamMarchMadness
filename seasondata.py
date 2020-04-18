@@ -10,7 +10,7 @@ class SeasonData:
     def __init__(self, year, coach_file, basic_file, adv_file):
         self.teams = {}
         self.year = year
-        self.matchups = Queue()
+        self.matchups = []
         self.bracket = None  # Initial bracket is blank
 
         coach_df = None
@@ -38,9 +38,10 @@ class SeasonData:
             # Iterate through adv and basic data frames to fill
             # out team informations into Team objects, stored in
             # self.teams
-            numTeams = bas_df.shape[0]
+            merged_inner = pd.merge(left=bas_df, right=adv_df, left_on='School', right_on='School')
+            numTeams = merged_inner.shape[0]
             for i in range(numTeams):
-                teamRow = bas_df.loc[i,:]
+                teamRow = merged_inner.loc[i,:]
                 teamName = teamRow['School']
                 # Trim 'NCAA' from the name
                 if "NCAA" in teamName:
