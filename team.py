@@ -1,36 +1,36 @@
-teamVocab = {  "Rk" : "Rank",
+teamVocab = {  "Rk_x" : "Rank",
                "School" : "School",
-               "G" : "Total Games",
-               "W" : "Overall Wins",
-               "L" : "Overall Losses",
-               "W-L%" : "Win-Loss Percentage",
-               "SRS" : "Simple Rating System",
-               "SOS" : "Strength of Schedule",
-               "W.1" : "Conference Wins",
-               "L.1" : "Conference Losses",
-               "W.2" : "Home Wins",
-               "L.2" : "Home Losses",
-               "W.3" : "Away Wins",
-               "L.3" : "Away Losses",
-               "Tm." : "Sum Team Points",
-               "Opp." : "Sum Opponent Points",
-               "MP" : "Minutes Played",
-               "FG" : "Field Goals",
-               "FGA" : "Field Goal Attempts",
-               "FG%" : "Field Goal Percentage",
-               "3P" : "3-Pointers Made",
-               "3PA" : "3-Point Average",
-               "3P%" : "3-Point Percentage",
-               "FT" : "Free Throws",
-               "FTA" : "Free Throw Attempts",
-               "FT%" : "Free Throw Percentage",
-               "ORB" : "Offensive Rebounds",
-               "TRB" : "Total Rebounds",
-               "AST" : "Assists",
-               "STL" : "Steals",
-               "BLK" : "Blocks",
-               "TOV" : "Turnovers",
-               "PF" : "Personal Fouls" }
+               "G_x" : "Total Games",
+               "W_x" : "Overall Wins",
+               "L_x" : "Overall Losses",
+               "W-L%_x" : "Win-Loss Percentage",
+               "SRS_x" : "Simple Rating System",
+               "SOS_x" : "Strength of Schedule",
+               "W.1_x" : "Conference Wins",
+               "L.1_x" : "Conference Losses",
+               "W.2_x" : "Home Wins",
+               "L.2_x" : "Home Losses",
+               "W.3_x" : "Away Wins",
+               "L.3_x" : "Away Losses",
+               "Tm._x" : "Sum Team Points",
+               "Opp._x" : "Sum Opponent Points",
+               "MP_x" : "Minutes Played",
+               "FG_x" : "Field Goals",
+               "FGA_x" : "Field Goal Attempts",
+               "FG%_x" : "Field Goal Percentage",
+               "3P_x" : "3-Pointers Made",
+               "3PA_x" : "3-Point Average",
+               "3P%_x" : "3-Point Percentage",
+               "FT_x" : "Free Throws",
+               "FTA_x" : "Free Throw Attempts",
+               "FT%_x" : "Free Throw Percentage",
+               "ORB_x" : "Offensive Rebounds",
+               "TRB_x" : "Total Rebounds",
+               "AST_x" : "Assists",
+               "STL_x" : "Steals",
+               "BLK_x" : "Blocks",
+               "TOV_x" : "Turnovers",
+               "PF_x" : "Personal Fouls" }
 
 coachVocab = { "Coach" : "Coach",
                "School" : "School",
@@ -73,20 +73,20 @@ class Team:
         return self.coach_data
 
     def num_games(self):
-        return self.team_data['G']
+        return self.team_data['G_x']
 
     def num_wins(self, param="overall"):
         # Returns number of wins based on parameter.
         param = param.lower()
         res = -1
         if param == "overall":
-            res = self.team_data['W']
+            res = self.team_data['W_x']
         elif param == "conference":
-            res = self.team_data['W.1']
+            res = self.team_data['W.1_x']
         elif param == "home":
-            res = self.team_data['W.2']
+            res = self.team_data['W.2_x']
         elif param == "away":
-            res = self.team_data['W.3']
+            res = self.team_data['W.3_x']
         else:
             print("num_wins for", self.get_team_name, ": Invalid parameters.")
         return res
@@ -96,13 +96,13 @@ class Team:
         param = param.lower()
         res = -1
         if param == "overall":
-            res = self.team_data['L']
+            res = self.team_data['L_x']
         elif param == "conference":
-            res = self.team_data['L.1']
+            res = self.team_data['L.1_x']
         elif param == "home":
-            res = self.team_data['L.2']
+            res = self.team_data['L.2_x']
         elif param == "away":
-            res = self.team_data['L.3']
+            res = self.team_data['L.3_x']
         else:
             print("num_losses for", self.get_team_name, ": Invalid parameters.")
         return res
@@ -130,6 +130,7 @@ class Team:
                 vocab = teamVocab
             try:
                 for key in vocab:
+                    print(key)
                     entry = vocab[key]
                     if spec == "coach":
                         res = self.get_coach_attribute(key)

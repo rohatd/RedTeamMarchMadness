@@ -37,17 +37,19 @@ def teamCompare():
 def generateBracket():
 
 	teamList = deque()
+	teams = []
 	file = open("64.txt", 'r')
 	for l in file:
-		teamList.append(l)
-	global B
+		teams.append(l.strip())
+		
+	# global B
+	# try:
+	# 	B = Bracket(teamList)
+	# except: 
+	# 	print("bracket: something went wrong.")
 
-	try:
-		B = Bracket(teamList)
-	except: 
-		print("bracket: something went wrong.")
 
-	teams = B.getBracket()
+	# teams = B.getBracket()
 	print(teams)
 	return render_template('generateBracket.html', teams= teams)
 
