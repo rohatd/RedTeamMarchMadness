@@ -39,13 +39,13 @@ def generateBracket():
 	teamList = deque()
 	file = open("64.txt", 'r')
 	for l in file:
-		teamList.append(l)
+		teamList.append(l.strip())
 	global B
-
 	try:
 		B = Bracket(teamList)
 	except: 
 		print("bracket: something went wrong.")
+
 
 	teams = B.getBracket()
 	print(teams)

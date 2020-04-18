@@ -16,8 +16,7 @@ class Matchup:
 
 
     def getWinner(self):
-        return 0
-        #return RandomForestRegressor(2018)
+        return RandomForestRegressor(2018)
 
     def get_regeressor_info(self,home,away):
         data = {'away_assist_percentage' : [away.get_attribute("AST%")],
