@@ -1,6 +1,7 @@
 from matchup import Matchup
 import json
 
+from queue import Queue
 
 
 class Bracket:

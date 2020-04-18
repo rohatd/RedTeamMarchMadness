@@ -3,6 +3,8 @@ from matchup import Matchup
 from bracket import *
 import pandas as pd
 
+from queue import Queue
+
 class SeasonData:
 
     def __init__(self, year, coach_file, basic_file, adv_file):
