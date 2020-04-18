@@ -20,6 +20,7 @@ def seasondata_test():
 
 
 def test():
+
     coach_file = "raw_coaches_2018_2019.csv"
     basic_file = "raw_basicschool_2018_2019.csv"
     adv_file = "raw_advschool_2018_2019.csv"
@@ -28,9 +29,6 @@ def test():
     #successfully intialize season data
     sd = SeasonData(2019, coach_file, basic_file, adv_file)
     print("tester.py: SeasonData initialization successful.")
-
-
-
 
 
     #successfully get teams
@@ -51,7 +49,24 @@ def test():
     Tennessee = sd.get_team("Tennessee")
     Oregon = sd.get_team("Oregon")
 
+    #Oregon.print_team_data()
+
+    teamList = []
+    teamList.append(FloridaState)
+    teamList.append(Gonzaga)
+    teamList.append(TexasTech)
+    teamList.append(Michigan)
+
     
+    #test create bracket 
+    testBracket = Bracket(teamList)
+    
+    #test evaluate bracket
+    testBracket.evaluateBracket()
+
+    #test return list of front end bracket input
+    print(testBracket.getBracket())
+
 
     #param_grid = {
     #'bootstrap': [True, False],
@@ -73,11 +88,7 @@ def test():
     # }
 
     #create teamList to insert into Bracket
-    teamList = []
-    teamList.append(FloridaState)
-    teamList.append(Gonzaga)
-    teamList.append(TexasTech)
-    teamList.append(Michigan)
+    
     # teamList.append(LSU)
     # teamList.append(MichiganSt)
     # teamList.append(VirginiaTech)
@@ -96,17 +107,6 @@ def test():
     #     t2 = teamList.pop(0)
     #     teamList.append(t1)
     # print(teamList[0].get_team_name())
-
-
-
-    #test create bracket 
-    testBracket = Bracket(teamList)
-    
-    #test evaluate bracket
-    testBracket.evaluateBracket()
-
-    #test return list of front end bracket input
-    print(testBracket.getBracket())
 
 
     #print(Schedule("Duke",2019).dataframe_extended)

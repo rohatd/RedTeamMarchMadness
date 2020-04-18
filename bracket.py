@@ -4,7 +4,6 @@ import json
 from queue import Queue
 
 
-
 class Bracket:
 
     def __init__(self,matchupQ):
@@ -33,6 +32,5 @@ class Bracket:
     def getBracket(self):
         name_list=[]
         for i in range(len(self.matchupList)):
-            name_list.append(self.matchupList[i])
-            #name_list.append(self.matchupList[i].get_team_name().replace(" NCAA",""))
+            name_list.append(self.matchupList[i].get_team_name().replace(" NCAA",""))
         return name_list
