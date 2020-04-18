@@ -65,7 +65,7 @@ def test():
     testBracket.evaluateBracket()
 
     #test return list of front end bracket input
-    print(testBracket.getBracket())
+    #print(testBracket.getBracket())
 
 
     #param_grid = {

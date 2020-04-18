@@ -39,9 +39,14 @@ class SeasonData:
             # out team informations into Team objects, stored in
             # self.teams
             merged_inner = pd.merge(left=bas_df, right=adv_df, left_on='School', right_on='School')
-            numTeams = merged_inner.shape[0]
+            #numTeams = merged_inner.shape[0]
+            #print(numTeams)
+            numTeams = bas_df.shape[0]
             for i in range(numTeams):
                 teamRow = merged_inner.loc[i,:]
+                #print("Dhruv's way", teamRow)
+                #print("Mario's way", bas_df.loc[i, :])
+                #teamRow = bas_df.loc[i,:]
                 teamName = teamRow['School']
                 # Trim 'NCAA' from the name
                 if "NCAA" in teamName:

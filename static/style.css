@@ -12,14 +12,14 @@
 
 #matchup {
   text-align: center;
-  width: 90px;
+  width: 100px;
   height: 70px;
 }
 
 #team {
   display: block;
   background-color: white;
-  width: 90px;
+  width: 100px;
   height: 30px;
   text-align: center;
   margin: auto;
