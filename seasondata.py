@@ -7,6 +7,7 @@ from queue import Queue
 
 class SeasonData:
 
+
     def __init__(self, year, coach_file, basic_file, adv_file):
         self.teams = {}
         self.year = year

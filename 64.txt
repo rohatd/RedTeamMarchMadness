@@ -1,63 +1,64 @@
 Duke
-UCF
-Mississippi St
+North Dakota
+Virginia Commonwealth
+Central Florida
+Mississippi State
+Liberty
 Virginia Tech
+Saint Louis
+Maryland
 Belmont
-LSU
+Louisiana State
+Yale
 Louisville
-Michigan St
+Minnesota
+Michigan State
+Bradley
 Gonzaga
+Fairleigh Dickinson
 Syracuse
+Baylor
 Marquette
-Florida St
+Murray State
+Florida State
+Vermont
 Buffalo
+Arizona State
 Texas Tech
+Northern Kentucky
 Nevada
+Florida
 Michigan
+Montana
 Virginia
-Ole Miss
+Gardner-Webb
+Mississippi
+Oklahoma
+Wisconsin
 Oregon
-UC Irvine
+Kansas State
+UC-Irvine
 Villanova
+Saint Mary's (CA)
 Purdue
+Old Dominion
 Cincinnati
+Iowa
 Tennessee
-UNC
+Colgate
+North Carolina
+Iona
+Utah State
 Washington
 Auburn
+New Mexico State
 Kansas
-Iowa St
+Northeastern
+Iowa State
+Ohio State
 Houston
+Georgia State
 Wofford
+Seton Hall
 Kentucky
-Duke
-Virginia Tech
-Belmont
-Louisville
-Gonzaga
-Flordia
-Texas Tech
-Michigan
-Virginia
-UC Irvine
-Villanova
-Tennessee
-UNC
-Auburn
-Iowa St
-Kentucky
-Duke
-Louisville
-Gonzaga
-Texas Tech
-Virginia
-Tennessee
-UNC
-Iowa St
-Duke
-Gonzaga
-Virginia
-UNC
-Gonzaga
-UNC
-Gonzaga
+Abilene Christian

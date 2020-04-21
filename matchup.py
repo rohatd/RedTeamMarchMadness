@@ -2,7 +2,7 @@ import pandas as pd
 from sportsreference.ncaab.schedule import Schedule
 from sklearn.ensemble import RandomForestRegressor
 import re
-import random
+import random 
 from multiprocessing import Process
 
 
@@ -104,10 +104,17 @@ class Matchup:
         
 
         #pull in the scores for all games played in a certain season for both teams
-        team1_schedule = Schedule(self.team1.get_team_name().replace(" NCAA","").replace(" ","-"),year)
-        team2_schedule = Schedule(self.team2.get_team_name().replace(" NCAA","").replace(" ","-"),year)
+        team1_name = self.team1.get_team_name().replace(" NCAA", "").replace(" ", "-").replace("(", "").replace(")", "").replace("'", "")
+        team2_name = self.team2.get_team_name().replace(" NCAA", "").replace(" ", "-").replace("(", "").replace(")", "").replace("'", "")
+        if team1_name == "UC-Irvine":
+            team1_name = "CALIFORNIA-IRVINE"
+        if team2_name == "UC-Irvine":
+            team2_name = "CALIFORNIA-IRVINE"
+
+        team1_schedule = Schedule(team1_name,year)
+        team2_schedule = Schedule(team2_name,year)
         #team1_schedule.dataframe_extended.to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\team1_schedule.xlsx', index=True)
-        #print("got schedules")
+        print("got schedules")
 
         team1_df = team1_schedule.dataframe_extended
         team1_df_home = team1_df[team1_df.index.str.contains(self.team1.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
@@ -117,12 +124,12 @@ class Matchup:
         team2_df_home = team2_df[team2_df.index.str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
         team2_df_away = team2_df[~team2_df.index.str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
         
-        #print("seperated home and away")
+        print("seperated home and away")
         #compile into one dataset
         dataset_1 = pd.concat([team1_df_home, team2_df_away])
         dataset_2 = pd.concat([team2_df_home, team1_df_away])
         
-        #print('concated proper dataframes')
+        print('concated proper dataframes')
         #create training sets from datasetf
         X_train_1 = dataset_1.drop(FIELDS_TO_DROP, 1).dropna().drop_duplicates()
         X_train_2 = dataset_2.drop(FIELDS_TO_DROP, 1).dropna().drop_duplicates()
@@ -130,7 +137,7 @@ class Matchup:
         Y_train_1 = dataset_1[['home_points','away_points']]
         Y_train_2 = dataset_2[['home_points','away_points']]
 
-        #print('created training sets')
+        print('created training sets')
         #pd.DataFrame(X_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\X_train.xlsx', index=False)
         #pd.DataFrame(Y_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\Y_train.xlsx', index=False)
 
@@ -145,7 +152,7 @@ class Matchup:
         X_test_1  = self.get_regeressor_info(self.team1,self.team2)#team1.get_attributes() + team2.get_attributes
         X_test_2  = self.get_regeressor_info(self.team2,self.team1)#team1.get_attributes() + team2.get_attributes
 
-        #print('got test sets')
+        print('got test sets')
         #pd.DataFrame(X_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\X_train_{0}.xlsx'.format(self.team1.get_team_name()))
         #pd.DataFrame(X_test).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\X_test_{0}.xlsx'.format(self.team1.get_team_name()))
         #print(X_train)
@@ -170,7 +177,7 @@ class Matchup:
         # p2.start()
         # p1.join()
         # p2.join()
-        # print('finished join')
+        print('finished join')
 
         model_1.fit(X_train_1, Y_train_1)
         model_2.fit(X_train_2, Y_train_2)
@@ -179,7 +186,7 @@ class Matchup:
         spread_1 = model_1.predict(X_test_1).astype(int)
         spread_2 = model_2.predict(X_test_2).astype(int)
 
-        #print('predicted spreads')
+        print('predicted spreads')
         spread_1 = str(spread_1[0]).replace("[","").replace("]","").split(" ")
         spread_2 = str(spread_2[0]).replace("[","").replace("]","").split(" ")
         

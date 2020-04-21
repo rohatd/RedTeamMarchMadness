@@ -14,23 +14,23 @@ teamVocab = {  "Rk_x" : "Rank",
                "L.3_x" : "Away Losses",
                "Tm._x" : "Sum Team Points",
                "Opp._x" : "Sum Opponent Points",
-               "MP_x" : "Minutes Played",
-               "FG_x" : "Field Goals",
-               "FGA_x" : "Field Goal Attempts",
-               "FG%_x" : "Field Goal Percentage",
-               "3P_x" : "3-Pointers Made",
-               "3PA_x" : "3-Point Average",
-               "3P%_x" : "3-Point Percentage",
-               "FT_x" : "Free Throws",
-               "FTA_x" : "Free Throw Attempts",
-               "FT%_x" : "Free Throw Percentage",
-               "ORB_x" : "Offensive Rebounds",
-               "TRB_x" : "Total Rebounds",
-               "AST_x" : "Assists",
-               "STL_x" : "Steals",
-               "BLK_x" : "Blocks",
-               "TOV_x" : "Turnovers",
-               "PF_x" : "Personal Fouls" }
+               "MP" : "Minutes Played",
+               "FG" : "Field Goals",
+               "FGA" : "Field Goal Attempts",
+               "FG%" : "Field Goal Percentage",
+               "3P" : "3-Pointers Made",
+               "3PA" : "3-Point Average",
+               "3P%" : "3-Point Percentage",
+               "FT" : "Free Throws",
+               "FTA" : "Free Throw Attempts",
+               "FT%" : "Free Throw Percentage",
+               "ORB" : "Offensive Rebounds",
+               "TRB" : "Total Rebounds",
+               "AST" : "Assists",
+               "STL" : "Steals",
+               "BLK" : "Blocks",
+               "TOV" : "Turnovers",
+               "PF" : "Personal Fouls" }
 
 coachVocab = { "Coach" : "Coach",
                "School" : "School",
@@ -118,7 +118,7 @@ class Team:
         val = self.coach_data[param]
         if isinstance(val, float):
             val = '%.3f'%(val)
-        return str(val)
+        return str(val) 
 
     def stats_json(self, response={}):
         # Constructs a dictionary to be converted into a JSON object to return to frontend (for Stats).
@@ -130,7 +130,6 @@ class Team:
                 vocab = teamVocab
             try:
                 for key in vocab:
-                    print(key)
                     entry = vocab[key]
                     if spec == "coach":
                         res = self.get_coach_attribute(key)
