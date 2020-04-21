@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 SD =None
-B = None
+B = None 
 
 
 # Request Handling
@@ -38,7 +38,7 @@ def generateBracket():
 
 	teamList = deque()
 	teams = []
-	file = open("64.txt", 'r')
+	file = open("bracket.txt", 'r')
 	for l in file:
 		teams.append(l.strip())
 		
@@ -50,7 +50,7 @@ def generateBracket():
 
 
 	# teams = B.getBracket()
-	print(teams)
+	#print(teams)
 	return render_template('generateBracket.html', teams= teams)
 
 @app.route("/stats")
