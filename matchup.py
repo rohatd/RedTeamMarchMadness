@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 import re
 import random 
 from multiprocessing import Process
-
+# from scheduleData import *
 
 
 
@@ -92,6 +92,11 @@ class Matchup:
                 }
         return pd.DataFrame(data)
 
+    def init_scheduleData():
+        box_file = "data.csv"
+        bs = ScheduleData(2019, box_file)
+        print("tester.py: ScheduleData initialization successful.")
+        return bs
 
     def randomForestRegressor(self,year):
         #print("in random forest regressor")
@@ -117,25 +122,50 @@ class Matchup:
         print("got schedules")
 
         team1_df = team1_schedule.dataframe_extended
+        print(team1_df.head())
         team1_df_home = team1_df[team1_df.index.str.contains(self.team1.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
         team1_df_away = team1_df[~team1_df.index.str.contains(self.team1.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
 
         team2_df = team2_schedule.dataframe_extended
+        print(team2_df.head())
         team2_df_home = team2_df[team2_df.index.str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
         team2_df_away = team2_df[~team2_df.index.str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
+
+        # box_file = "data.csv"
+        # bs = ScheduleData(2019, box_file)
+        # print("tester.py: ScheduleData initialization successful.")
+        # data_bf = bs.box_df
+        # print("Initialized data")
+
+        # team1_df_home = data_bf[data_bf.iloc[:,0].str.contains(self.team1.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
+        # team1_df_away = data_bf[~data_bf.iloc[:,0].str.contains(self.team1.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
+
+        # #print(team1_df_home)
+
+        # team2_df_home = data_bf[data_bf.iloc[:,0].str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
+        # team2_df_away = data_bf[~data_bf.iloc[:,0].str.contains(self.team2.get_team_name().replace(" NCAA","").replace(" ","-").lower())]
         
         print("seperated home and away")
         #compile into one dataset
         dataset_1 = pd.concat([team1_df_home, team2_df_away])
         dataset_2 = pd.concat([team2_df_home, team1_df_away])
         
+        # dataset_1.drop(dataset_1.columns[[0]], axis=1, inplace=True)
+        # dataset_2.drop(dataset_2.columns[[0]], axis=1, inplace=True)
         print('concated proper dataframes')
         #create training sets from datasetf
         X_train_1 = dataset_1.drop(FIELDS_TO_DROP, 1).dropna().drop_duplicates()
         X_train_2 = dataset_2.drop(FIELDS_TO_DROP, 1).dropna().drop_duplicates()
 
+
+        print(X_train_1)
+        print(X_train_2)
+
         Y_train_1 = dataset_1[['home_points','away_points']]
         Y_train_2 = dataset_2[['home_points','away_points']]
+
+        print(Y_train_1)
+        print(Y_train_2)
 
         print('created training sets')
         #pd.DataFrame(X_train).to_excel(r'C:\Users\dr171\OneDrive\Documents\College\Spring2020\sd&d\RedTeamMarchMadness\X_train.xlsx', index=False)
@@ -193,6 +223,8 @@ class Matchup:
         team1_score = int(spread_1[0]) + int(spread_2[1])
         team2_score = int(spread_1[1]) + int(spread_2[0])
 
+        print("Team 1 score" , team1_score, self.team1.get_team_name())
+        print("Team 2 score", team2_score, self.team2.get_team_name())
 
 
         if(team1_score>team2_score):
