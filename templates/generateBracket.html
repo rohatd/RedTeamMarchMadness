@@ -1,373 +1,511 @@
 {% extends "layout.html" %}
 {% block content %}
 
-  <h2 class="text-center">GENERATE BRACKET</h2>
-
-
-  <div id="rd1">
-    <!-- EAST -->
-    <div id="matchup">
-      <div id ="team">{{teams[0]}}</div>
-      <div id="team">{{teams[1]}}</div>
+    <header>
+    <div class='header-text'>
+      <h1>2019 NCAA Bracket</h1>
     </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[2]}}</div>
-      <div id="team">{{teams[3]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[4]}}</div>
-      <div id="team">{{teams[5]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[6]}}</div>
-      <div id="team">{{teams[7]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[8]}}</div>
-      <div id="team">{{teams[9]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[10]}}</div>
-      <div id="team">{{teams[11]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team"></div>{{teams[12]}}
-      <div id="team">{{teams[13]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[14]}}</div>
-      <div id="team">{{teams[15]}}</div>
-    </div>
-    <!-- WEST -->
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[16]}}</div>
-      <div id="team"> {{teams[17]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[18]}}</div>
-      <div id="team">{{teams[19]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[20]}}</div>
-      <div id="team">{{teams[21]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[22]}}</div>
-      <div id="team">{{teams[23]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[24]}}</div>
-      <div id="team">{{teams[25]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[26]}}</div>
-      <div id="team">{{teams[27]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[28]}}</div>
-      <div id="team">{{teams[29]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[30]}}</div>
-      <div id="team">{{teams[31]}}</div>
-    </div>
+    <div class='half-circle-container'>
+      <div class='half-circle bottom-circle'>
+        <div></div>
+      </div>
   </div>
-
-  <div id=rd2>
-    <div id="matchup">
-      <div id ="team">{{teams[64]}}</div>
-      <div id="team">{{teams[65]}}</div>
+  </header>
+  <section>
     </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[66]}}</div>
-      <div id="team">{{teams[67]}}</div>
+    <div class='tournament tournament-header'>
+      <ul class='round'>
+        <li>First Round</li>
+      </ul>
+      <ul class='round'>
+        <li>Second Round</li>
+      </ul>
+      <ul class='round'>
+        <li>Sweet 16</li>
+      </ul>
+      <ul class='round'>
+        <li>Elite 8</li>
+      </ul>
+      <ul class='round'>
+        <li>Final 4</li>
+      </ul>
+      <ul class='round'>
+      </ul>
+      <ul class='round'>
+        <li>National Championship</li>
+      </ul>
+      <ul class='round'>
+      </ul>
+      <ul class='round'>
+        <li>Final 4</li>
+      </ul>
+      <ul class='round'>
+        <li>Elite 8</li>
+      </ul>
+      <ul class='round'>
+        <li>Sweet 16</li>
+      </ul>
+      <ul class='round'>
+        <li>Second Round</li>
+      </ul>
+      <ul class='round'>
+        <li>First Round</li>
+      </ul>
     </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[68]}}</div>
-      <div id="team">{{teams[69]}}</div>
+    <div class='tournament'>
+      <ul class='round seed'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>8</span>
+          <span>{{teams[0]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>8</span>
+          <span>{{teams[1]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>8</span>
+          <span>{{teams[2]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>9</span>
+          <span>{{teams[3]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>5</span>
+          <span>{{teams[4]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>12</span>
+          <span>{{teams[5]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>4</span>
+          <span>{{teams[6]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>13</span>
+          <span>{{teams[7]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>6</span>
+          <span>{{teams[8]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>11</span>
+          <span>{{teams[9]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>3</span>
+          <span>{{teams[10]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>14</span>
+          <span>{{teams[11]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>7</span>
+          <span>{{teams[12]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>10</span>
+          <span>{{teams[13]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>2</span>
+          <span>{{teams[14]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>15</span>
+          <span>{{teams[15]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>1</span>
+          <span>{{teams[16]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>16</span>
+          <span>{{teams[17]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>8</span>
+          <span>{{teams[18]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>9</span>
+          <span>{{teams[19]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>5</span>
+          <span>{{teams[20]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>12</span>
+          <span>{{teams[21]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>4</span>
+          <span>{{teams[22]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>13</span>
+          <span>{{teams[23]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>6</span>
+          <span>{{teams[24]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>11</span>
+          <span>{{teams[25]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>3</span>
+          <span>{{teams[26]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>14</span>
+          <span>{{teams[27]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>7</span>
+          <span>{{teams[28]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>10</span>
+          <span>{{teams[29]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>
+          <span>2</span>
+          <span>{{teams[30]}}</span>
+        </li>
+        <li class='game-left game-bottom'>
+          <span>15</span>
+          <span>{{teams[31]}}</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-1'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[64]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[65]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[66]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[67]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[68]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[69]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[70]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[71]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[72]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[73]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[74]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[75]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[76]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[77]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[78]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[79]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-2'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[96]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[97]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[98]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[99]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[100]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[101]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[102]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[103]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-3'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[112]}}</li>
+        <li class='game-left spacer region region-right'>East</li>
+        <li class='game-left game-bottom'>{{teams[113]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[114]}}</li>
+        <li class='game-left spacer region region-right'>West</li>
+        <li class='game-left game-bottom'>{{teams[115]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-4'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[120]}}</li>
+        <li class='game-left spacer'>&nbsp;</li>
+        <li class='game-left game-bottom'>{{teams[121]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round semi-final'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-left game-top'>{{teams[124]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round finals'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game final'>{{teams[126]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round semi-final'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[125]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-4'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[122]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[123]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-3'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[116]}}</li>
+        <li class='game-right spacer region region-left'>South</li>
+        <li class='game-right game-bottom'>{{teams[117]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[118]}}</li>
+        <li class='game-right spacer region region-left'>Midwest</li>
+        <li class='game-right game-bottom'>{{teams[119]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-2'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[104]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[105]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[106]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[107]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[108]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[109]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[110]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[111]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round round-1'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[80]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[81]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[82]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[83]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[84]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[85]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[86]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[87]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[88]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[89]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[90]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[91]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[92]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[93]}}</li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>{{teams[94]}}</li>
+        <li class='game-right spacer'>&nbsp;</li>
+        <li class='game-right game-bottom'>{{teams[95]}}</li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
+      <ul class='round seed'>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[32]}}</span>
+          <span>1</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[33]}}</span>
+          <span>16</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[34]}}</span>
+          <span>8</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[35]}}</span>
+          <span>9</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[36]}}</span>
+          <span>5</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[37]}}</span>
+          <span>12</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[38]}}</span>
+          <span>4</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[39]}}</span>
+          <span>13</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[40]}}</span>
+          <span>6</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[41]}}</span>
+          <span>11</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[42]}}</span>
+          <span>3</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[43]}}</span>
+          <span>14</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[44]}}</span>
+          <span>7</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[45]}}</span>
+          <span>10</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[46]}}</span>
+          <span>2</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[47]}}</span>
+          <span>15</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[48]}}</span>
+          <span>1</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[49]}}</span>
+          <span>16</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[50]}}</span>
+          <span>8</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[51]}}</span>
+          <span>9</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[52]}}</span>
+          <span>5</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[53]}}</span>
+          <span>12</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[54]}}</span>
+          <span>4</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[55]}}</span>
+          <span>13</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[56]}}</span>
+          <span>6</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[57]}}</span>
+          <span>11</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[58]}}</span>
+          <span>3</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[59]}}</span>
+          <span>14</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[60]}}</span>
+          <span>7</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[61]}}</span>
+          <span>10</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+        <li class='game-right game-top'>
+          <span>{{teams[62]}}</span>
+          <span>2</span>
+        </li>
+        <li class='game-right game-bottom'>
+          <span>{{teams[63]}}</span>
+          <span>15</span>
+        </li>
+        <li class='spacer'>&nbsp;</li>
+      </ul>
     </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[70]}}</div>
-      <div id="team">{{teams[71]}}</div>
-    </div>
-    <!--bottom-->
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[72]}}</div>
-      <div id="team">{{teams[73]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[74]}}</div>
-      <div id="team">{{teams[75]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[76]}}</div>
-      <div id="team">{{teams[77]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[78]}}</div>
-      <div id="team">{{teams[79]}}</div>
-    </div>
-  </div>
-
-  <div id=rd3>
-    <div id="matchup">
-      <div id ="team">{{teams[96]}}</div>
-      <div id="team">{{teams[97]}}</div>
-    </div>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[98]}}</div>
-      <div id="team">{{teams[99]}}</div>
-    </div>
-
-    <!--bottom-->
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[100]}}</div>
-      <div id="team">{{teams[101]}}</div>
-    </div>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[102]}}</div>
-      <div id="team">{{teams[103]}}</div>
-    </div>
-  </div>
-
-  <div id=rd4>
-    <div id="matchup">
-      <div id ="team">{{teams[112]}}</div>
-      <div id="team">{{teams[113]}}</div>
-    </div>
-    <!--bottom-->
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[114]}}</div>
-      <div id="team">{{teams[115]}}</div>
-    </div>
-  </div>
-
-  <div id=finalFour>
-    <div id="matchup">
-      <div id ="team">{{teams[120]}}</div>
-      <div id="team">{{teams[121]}}</div>
-    </div>
-  </div>
-
-  <div id=champion>
-    <h3> FINAL FOUR</h3>
-    <div id=cMatchup>
-      <div id ="team">{{teams[124]}}</div>
-      <div id="team">{{teams[125]}}</div>
-    </div>
-    <br>
-    <h3 class="text-center"> CHAMPION </h3>
-      <div id="team">{{teams[126]}} </div>
-  </div>
-
-  <div id=finalFour>
-    <div id="matchup">
-      <div id ="team">{{teams[122]}}</div>
-      <div id="team">{{teams[123]}}</div>
-    </div>
-  </div>
-
-  <div id=rd4>
-    <div id="matchup">
-      <div id ="team">{{teams[116]}}</div>
-      <div id="team">{{teams[117]}}</div>
-    </div>
-    <!--bottom-->
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
-
-    <div id="matchup">
-      <div id ="team">{{teams[118]}}</div>
-      <div id="team">{{teams[119]}}</div>
-    </div>
-  </div>
-
-  <div id=rd3>
-    <div id="matchup">
-      <div id ="team">{{teams[104]}}</div>
-      <div id="team">{{teams[105]}}</div>
-    </div>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[106]}}</div>
-      <div id="team">{{teams[107]}}</div>
-    </div>
-
-    <!--bottom-->
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[108]}}</div>
-      <div id="team">{{teams[109]}}</div>
-    </div>
-    <br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[110]}}</div>
-      <div id="team">{{teams[111]}}</div>
-    </div>
-  </div>
-
-  <div id=rd2>
-    <div id="matchup">
-      <div id ="team">{{teams[80]}}</div>
-      <div id="team">{{teams[81]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[82]}}</div>
-      <div id="team">{{teams[83]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[84]}}</div>
-      <div id="team">{{teams[85]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[86]}}</div>
-      <div id="team">{{teams[87]}}</div>
-    </div>
-    <!--bottom-->
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[88]}}</div>
-      <div id="team">{{teams[89]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[90]}}</div>
-      <div id="team">{{teams[91]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[92]}}</div>
-      <div id="team">{{teams[93]}}</div>
-    </div>
-    <br><br><br><br><br>
-    <div id="matchup">
-      <div id ="team">{{teams[94]}}</div>
-      <div id="team">{{teams[95]}}</div>
-    </div>
-  </div>
-
-  <div id="rd1">
-
-  <!-- SOUTH --> 
-    <div id="matchup">
-      <div id ="team">{{teams[32]}}</div>
-      <div id="team">{{teams[33]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[34]}}</div>
-      <div id="team">{{teams[35]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[36]}}</div>
-      <div id="team">{{teams[37]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[38]}}</div>
-      <div id="team">{{teams[39]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[40]}}</div>
-      <div id="team">{{teams[41]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[42]}}</div>
-      <div id="team">{{teams[43]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[44]}}</div>
-      <div id="team">{{teams[45]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[46]}}</div>
-      <div id="team">{{teams[47]}}</div>
-    </div>
-    <!--MIDWEST -->
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[48]}}</div>
-      <div id="team">{{teams[49]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[50]}}</div>
-      <div id="team">{{teams[51]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[52]}}</div>
-      <div id="team">{{teams[53]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[54]}}</div>
-      <div id="team">{{teams[55]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[56]}}</div>
-      <div id="team">{{teams[57]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[58]}}</div>
-      <div id="team">{{teams[59]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[60]}}</div>
-      <div id="team">{{teams[61]}}</div>
-    </div>
-    <br>
-    <div id="matchup">
-      <div id ="team">{{teams[62]}}</div>
-      <div id="team">{{teams[63]}}</div>
-    </div>
-  </div>
+  </section>
 {% endblock content %}  

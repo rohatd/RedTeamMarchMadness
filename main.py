@@ -5,7 +5,7 @@ import pandas as pd
 from matchup import *
 from sportsreference.ncaab.schedule import Schedule
 from sportsreference.ncaab.teams import Teams
-from itertools import product
+from itertools import product 
 
 
 def init_seasondata():
@@ -39,11 +39,11 @@ def run():
 	predictedList = predictedBracket.getBracket()
 	print(predictedList)
 
-	f = open("bracket.txt", "a")
-	for i in predictedList:
-		f.write(i + "\n")
+	# f = open("bracket.txt", "a")
+	# for i in predictedList:
+	# 	f.write(i + "\n")
 
-	f.close()
+	# f.close()
 
 
 
