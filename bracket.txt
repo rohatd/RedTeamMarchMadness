@@ -67,7 +67,7 @@ Virginia Commonwealth
 Liberty
 Virginia Tech
 Belmont
-Yale
+Louisiana State
 Louisville
 Michigan State
 Gonzaga
@@ -81,7 +81,7 @@ Michigan
 Virginia
 Mississippi
 Oregon
-Kansas State
+UC-Irvine
 Villanova
 Purdue
 Cincinnati
@@ -93,7 +93,7 @@ Northeastern
 Iowa State
 Houston
 Wofford
-Abilene Christian
+Kentucky
 Duke
 Liberty
 Belmont
@@ -106,10 +106,10 @@ Virginia
 Oregon
 Purdue
 Tennessee
-Utah State
+North Carolina
 Auburn
 Houston
-Wofford
+Kentucky
 Duke
 Belmont
 Gonzaga
@@ -117,11 +117,11 @@ Buffalo
 Virginia
 Tennessee
 Auburn
-Houston
+Kentucky
 Duke
 Gonzaga
 Virginia
-Houston
+Auburn
 Gonzaga
 Virginia
 Gonzaga

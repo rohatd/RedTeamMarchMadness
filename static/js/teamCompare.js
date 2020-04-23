@@ -123,6 +123,3 @@ function showStats(data){
 }
 
 
-function displayWinner() {
-  document.getElementById("w/l%2").innerHTML = 3;
-}
