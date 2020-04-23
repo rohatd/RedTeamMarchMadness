@@ -42,6 +42,7 @@
 
           <div class="col text-center">
 
+
         <div id="team1">
           <h6>WINNER: </h6>
           <div class="teamInfo">
@@ -50,8 +51,13 @@
             <select id="alg" onsubmit="displayWinner()">
               <option value="" disabled selected>Select</option>
               <option value="wins">Wins</option>
-              <option value="losses">Losses</option>
+              <option value="ins">Home Wins</option>
+              <option value="dins">Away Wins</option>
+              <option value="rating">Rating</option>
+              <option value="w/l%">W/L %</option>
             </select>
+
+
             <button onclick="displayWinner()">Submit</button>
             <script>
               function displayWinner() {
@@ -69,20 +75,84 @@
                   document.getElementById("winner").innerHTML = document.getElementById("teamName2").innerHTML;
                 }
               }
-              else {
-                var team1 = document.getElementById("numLosses").innerHTML;
-                var team1Losses = parseInt(team1.substr(team1.length - 2));
+              else if ($("#alg :selected").text() == "Home Wins"){
+                let message1 = document.getElementById("teamName").innerHTML;
+                let message2 = document.getElementById("teamName2").innerHTML;
+                $.ajax({
+                    url: "http://localhost:5000/api/compare/",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"message1": message1,"message2": message2})
+                  }).done(function(data) {
+                    console.log(data);
+                    homewins(data);
+                  });
 
-                var team2 = document.getElementById("numLosses").innerHTML;
-                var team2Losses = parseInt(team2.substr(team2.length - 2));
 
-                if (team1Losses > team2Losses) {
-                  document.getElementById("winner").innerHTML = document.getElementById("teamName").innerHTML;
-                }
-                else {
-                  document.getElementById("winner").innerHTML = document.getElementById("teamName2").innerHTML;
-                }
               }
+
+              else if ($("#alg :selected").text() == "Away Wins"){
+
+                let message1 = document.getElementById("teamName").innerHTML;
+                let message2 = document.getElementById("teamName2").innerHTML;
+                $.ajax({
+                    url: "http://localhost:5000/api/compare/",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"message1": message1,"message2": message2})
+                  }).done(function(data) {
+                    console.log(data);
+                    awaywins(data);
+                  });
+              }
+
+              else if ($("#alg :selected").text() == "Rating"){
+
+                let message1 = document.getElementById("teamName").innerHTML;
+                let message2 = document.getElementById("teamName2").innerHTML;
+                $.ajax({
+                    url: "http://localhost:5000/api/compare/",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"message1": message1,"message2": message2})
+                  }).done(function(data) {
+                    console.log(data);
+                    rate(data);
+                  });
+                
+              }
+
+              else if ($("#alg :selected").text() == "W/L %"){
+
+                let message1 = document.getElementById("teamName").innerHTML;
+                let message2 = document.getElementById("teamName2").innerHTML;
+                $.ajax({
+                    url: "http://localhost:5000/api/compare/",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"message1": message1,"message2": message2})
+                  }).done(function(data) {
+                    console.log(data);
+                    perc(data);
+                  });
+                
+              }
+            }
+
+            function homewins(data) {
+              document.getElementById("winner").innerHTML = data.homeWins;    
+            }
+
+            function awaywins(data) {
+              document.getElementById("winner").innerHTML = data.awayWins;    
+            }
+
+            function rate(data) {
+              document.getElementById("winner").innerHTML = data.rating;    
+            }
+
+            function perc(data) {
+              document.getElementById("winner").innerHTML = data.w_l_p;    
             }
             </script>
             <h6 id="winner"></h6>

@@ -1,4 +1,7 @@
+
 var year;
+var team1;
+var team2;
 
 $("document").ready(function(){
     initSeasonData()
@@ -14,6 +17,7 @@ $("document").ready(function(){
         }).done(function(data) {
             console.log(data);
             showText(data);
+            team1 = message
         });
     });
  
@@ -28,6 +32,7 @@ $("document").ready(function(){
       }).done(function(data) {
         console.log(data);
         showText2(data);
+        //team2 = message2
       });
     });
 
@@ -44,6 +49,7 @@ $("document").ready(function(){
         showStats(data);
       });
     });
+
 
 });
 
@@ -68,6 +74,11 @@ function showText(data) {
   document.getElementById("numGames").innerHTML = "Number of games: " + data.numGames;
   document.getElementById("numWins").innerHTML = "Number of wins: " + data.numWins;
   document.getElementById("numLosses").innerHTML = "Number of losses: " + data.numLosses;
+  //document.getElementById("homeWins").innerHTML = data.homeWins;
+
+  document.getElementById("awayWins").innerHTML = data.awayWins;
+  document.getElementById("rating").innerHTML = data.rating;
+  document.getElementById("w/l%").innerHTML = data.w_l_p;
 }
 
 function showText2(data) {
@@ -77,7 +88,13 @@ function showText2(data) {
   document.getElementById("numGames2").innerHTML = "Number of games: " + data.numGames;
   document.getElementById("numWins2").innerHTML = "Number of wins: " + data.numWins;
   document.getElementById("numLosses2").innerHTML = "Number of losses: " + data.numLosses;
+  document.getElementById("homeWins2").innerHTML = data.homeWins;
+  document.getElementById("awayWins2").innerHTML = data.awayWins;
+  document.getElementById("rating2").innerHTML = data.rating;
+  document.getElementById("w/l%2").innerHTML = data.w_l_p;
+
 }
+
 
 // Set year to display for Team Comparison page.
 function setYear(data) {
@@ -103,4 +120,9 @@ function showStats(data){
   document.getElementById("statCoachTitle").innerHTML = "Coach";
   document.getElementById("team-stat-table").innerHTML = teamtable;
   document.getElementById("coach-stat-table").innerHTML = coachtable;
+}
+
+
+function displayWinner() {
+  document.getElementById("w/l%2").innerHTML = 3;
 }
