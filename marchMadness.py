@@ -78,6 +78,69 @@ def main_interface():
 	response["numGames"] = str(team.num_games())
 	response["numWins"] = str(team.num_wins())
 	response["numLosses"] = str(team.num_losses())
+
+	response["homeWins"] = str(team.get_attribute("W.2_x"))
+	response["awayWins"] = str(team.get_attribute("W.3_x"))
+	response["rating"] = str(team.get_attribute("SRS_x"))
+	response["w_l_p"] = str(team.get_attribute("W-L%_x"))
+	return jsonify(response)
+
+@app.route('/api/compare/', methods=["POST"])
+def compare():
+	input = request.get_json()
+	print("Message received:", input, type(input))
+
+	global SD
+	t1 = input["message1"]
+	t2 = input["message2"]
+	teamName1 = t1[6:]
+	teamName2 = t2[6:]
+
+	try:
+		team1 = SD.get_team(teamName1)
+		team2 = SD.get_team(teamName2)
+
+	except:
+		return jsonify({"/api/compare": "team name failed to load"})
+	response1 = {}
+
+	print("OKAY")
+	response1["numWins"] = str(team1.num_wins())
+	response1["homeWins"] = str(team1.get_attribute("W.2_x"))
+	response1["awayWins"] = str(team1.get_attribute("W.3_x"))
+	response1["rating"] = str(team1.get_attribute("SRS_x"))
+	response1["w_l_p"] = str(team1.get_attribute("W-L%_x"))
+
+	response1["numWins2"] = str(team2.num_wins())
+	response1["homeWins2"] = str(team2.get_attribute("W.2_x"))
+	response1["awayWins2"] = str(team2.get_attribute("W.3_x"))
+	response1["rating2"] = str(team2.get_attribute("SRS_x"))
+	response1["w_l_p2"] = str(team2.get_attribute("W-L%_x"))
+
+
+	response = {}
+	if int(response1["homeWins2"]) > int(response1["homeWins"]):
+		response["homeWins"] = teamName2
+	else:
+		response["homeWins"] = teamName1 
+
+	if int(response1["awayWins2"]) > int(response1["awayWins"]):
+		response["awayWins"] = teamName2
+	else:
+		response["awayWins"] = teamName1 
+
+	if float(response1["rating2"]) > float(response1["rating"]):
+		response["rating"] = teamName2
+	else:
+		response["rating"] = teamName1 
+
+	if float(response1["w_l_p2"]) > float(response1["w_l_p"]):
+		response["w_l_p"] = teamName2
+	else:
+		response["w_l_p"] = teamName1 
+
+
+	print(response)
 	return jsonify(response)
 
 

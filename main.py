@@ -24,11 +24,13 @@ def run():
 
 	#gets top 64 team names in order and retrieves data from season data
 	teamList = []
-	file = open("64.txt", 'r')
-	for team in file:
-		teamName = sd.get_team(team.strip())
-		teamList.append(teamName)
+	# file = open("64.txt", 'r')
+	# for team in file:
+	# 	teamName = sd.get_team(team.strip())
+	# 	teamList.append(teamName)
 
+	teamList.append(sd.get_team("Virginia"))
+	teamList.append(sd.get_team("Gonzaga"))
 	#evaluates teams
 	predictedBracket = Bracket(teamList)
 
