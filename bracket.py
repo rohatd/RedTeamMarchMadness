@@ -15,7 +15,7 @@ class Bracket:
 
     #returns json of the teams in the queue
     def get_teams(self):
-        return json.dummps(list(self.matchupQueue.queue))
+        return json.dumps(list(self.matchupQueue))
 
     #evalaute bracket 
     def evaluateBracket(self):

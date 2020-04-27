@@ -36,7 +36,6 @@ def teamCompare():
 @app.route("/generate-bracket")
 def generateBracket():
 
-	teamList = deque()
 	teams = []
 	file = open("bracket.txt", 'r')
 	for l in file:
@@ -171,12 +170,12 @@ def add_headers(response):
 	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 	return response
 
-@app.route('/api/get-teams', methods=["POST"])
-def getTeams():
-	try:
-		teams = SD.getTeams()
-	except:
-		return jsonify({"/api/get-teams": "Fail"})
+# @app.route('/api/get-teams', methods=["POST"])
+# def getTeams():
+# 	try:
+# 		SD.getTeams()
+# 	except:
+# 		return jsonify({"/api/get-teams": "Fail"})
 
 
 if __name__ == "__main__":
