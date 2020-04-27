@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 import re
 import random 
 from multiprocessing import Process
+
 # from scheduleData import *
 
 
@@ -92,11 +93,11 @@ class Matchup:
                 }
         return pd.DataFrame(data)
 
-    def init_scheduleData():
-        box_file = "data.csv"
-        bs = ScheduleData(2019, box_file)
-        print("tester.py: ScheduleData initialization successful.")
-        return bs
+    # def init_scheduleData(self):
+    #     box_file = "data.csv"
+    #     bs = ScheduleData(2019, box_file)
+    #     print("tester.py: ScheduleData initialization successful.")
+    #     return bs
 
     def random_forest_regressor(self,year):
         #print("in random forest regressor")

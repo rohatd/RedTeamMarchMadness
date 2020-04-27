@@ -81,7 +81,7 @@ class SeasonData:
 
     def add_matchup(self, matchup):
         # Adds a matchup to matchup queue.
-        self.matchups.put(matchup)
+        self.matchups.append(matchup)
         print("New matchup added:", matchup.team1.get_team_name(), "&", matchup.team2.get_team_name())
 
     def new_bracket(self):
