@@ -11,19 +11,29 @@ To run the application,  the server needs to be started. First, activate the vir
 
  To install these packages, use the following commands: 
 
+
 $ pip install sklearn 
+
 $ pip install sportsreference
+
 $ pip install pandas 
+
 
 To start the server on Unix, Linux or macOS, use the following commands
 
+
 $ export FLASK_APP=marchMadness.py
+
 $ FLASK_DEBUG=1
+
 $ python marchMadness.py
+
 
 If using Windows, use ‘set’ instead of ‘export’.
 
+
 The server is now started. To launch the application, type the url of the localhost into the internet browser (Chrome, Firefox or Safari recommended). The address will be found in the bash shell after starting the server. (Line will read something like “Running on http://127.0.0.1.5000/”). If styling does not appear, press Ctrl +Shift +  r. This will refresh the page and clear the cache. 
+
 
 You can now navigate around the application, compare and view team statistics, and view the predicted 2019 March Madness bracket.
 
