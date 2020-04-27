@@ -42,27 +42,27 @@ class SeasonData:
             merged_inner = pd.merge(left=bas_df, right=adv_df, left_on='School', right_on='School')
             #numTeams = merged_inner.shape[0]
             #print(numTeams)
-            numTeams = bas_df.shape[0]
-            for i in range(numTeams):
-                teamRow = merged_inner.loc[i,:]
-                #print("Dhruv's way", teamRow)
+            num_teams = bas_df.shape[0]
+            for i in range(num_teams):
+                team_row = merged_inner.loc[i,:]
+                #print("Dhruv's way", team_row)
                 #print("Mario's way", bas_df.loc[i, :])
-                #teamRow = bas_df.loc[i,:]
-                teamName = teamRow['School']
+                #team_row = bas_df.loc[i,:]
+                team_name = team_row['School']
                 # Trim 'NCAA' from the name
-                if "NCAA" in teamName:
-                    teamName = teamName[:-5]
+                if "NCAA" in team_name:
+                    team_name = team_name[:-5]
                 # Get coach data (single row corresponding to school name.)
-                coachRow = coach_df.loc[coach_df['School'] == teamName].squeeze()
-                self.teams[teamName] = Team(self.year, teamRow, coachRow)
+                coach_row = coach_df.loc[coach_df['School'] == team_name].squeeze()
+                self.teams[team_name] = Team(self.year, team_row, coach_row)
             # TODO: accommodate advanced info dataframe by combining it with
-            # teamRow created from basic dataframe.
+            # team_row created from basic dataframe.
 
 
     # Getters
-    def get_team(self, teamName):
+    def get_team(self, team_name):
         # Returns Team object
-        return self.teams[teamName]
+        return self.teams[team_name]
 
     def get_matchups(self):
         # Returns stored list of matchups, to be used however.

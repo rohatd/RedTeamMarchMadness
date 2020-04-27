@@ -1,4 +1,4 @@
-teamVocab = {  "Rk_x" : "Rank",
+team_vocab = {  "Rk_x" : "Rank",
                "School" : "School",
                "G_x" : "Total Games",
                "W_x" : "Overall Wins",
@@ -32,7 +32,7 @@ teamVocab = {  "Rk_x" : "Rank",
                "TOV" : "Turnovers",
                "PF" : "Personal Fouls" }
 
-coachVocab = { "Coach" : "Coach",
+coach_vocab = { "Coach" : "Coach",
                "School" : "School",
                "Conference" : "Conference",
                "Since" : "School Career Start",
@@ -125,9 +125,9 @@ class Team:
         # Should include coach info as well.
         def lookup(data, spec):
             if spec == "coach":
-                vocab = coachVocab
+                vocab = coach_vocab
             else:
-                vocab = teamVocab
+                vocab = team_vocab
             try:
                 for key in vocab:
                     entry = vocab[key]
@@ -142,12 +142,12 @@ class Team:
                 print("team.py: stats_json() ... Error looking up entries for", spec, "vocabulary")
                 return None
 
-        teamData = {}
-        coachData = {}
-        lookup(teamData, "team")
-        lookup(coachData, "coach")
-        response["Team"] = teamData
-        response["Coach"] = coachData
+        team_data_res = {}
+        coach_data_res = {}
+        lookup(team_data_res, "team")
+        lookup(coach_data_res, "coach")
+        response["Team"] = team_data_res
+        response["Coach"] = coach_data_res
         return response
 
     # Display functions

@@ -58,10 +58,10 @@ def test():
     testBracket = Bracket(teamList)
     
     #test evaluate bracket
-    testBracket.evaluateBracket()
+    testBracket.evaluate_bracket()
 
 
-    orderedBracket = testBracket.getBracket()
+    orderedBracket = testBracket.get_bracket()
 
     f = open("bracket.txt", "a")
     for i in orderedBracket:

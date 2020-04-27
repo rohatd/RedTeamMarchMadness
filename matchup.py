@@ -15,7 +15,7 @@ class Matchup:
         self.team2 = team2
 
 
-    def getWinner(self):
+    def get_winner(self):
         return RandomForestRegressor(2018)
 
     def get_regeressor_info(self,home,away):
@@ -98,7 +98,7 @@ class Matchup:
         print("tester.py: ScheduleData initialization successful.")
         return bs
 
-    def randomForestRegressor(self,year):
+    def random_forest_regressor(self,year):
         #print("in random forest regressor")
         #fields brought in by sports reference api that we don't want
         FIELDS_TO_DROP = ['away_points', 'home_points', 'date', 'location',
@@ -257,7 +257,7 @@ class Matchup:
         else:
             return self.team2
 
-    def predictWinner(self, alg=None):
+    def predict_winner(self, alg=None):
         # Sample alg
         alg = alg.lower()
         if alg == "alg1":

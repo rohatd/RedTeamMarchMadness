@@ -10,7 +10,7 @@ class Bracket:
         self.matchupQueue = list(matchupQ)
         self.matchupList = list(matchupQ)
         
-    def printQueue(self):
+    def print_queue(self):
         print(self.matchupQueue)
 
     #returns json of the teams in the queue
@@ -18,18 +18,18 @@ class Bracket:
         return json.dummps(list(self.matchupQueue.queue))
 
     #evalaute bracket 
-    def evaluateBracket(self):
+    def evaluate_bracket(self):
         while len(self.matchupQueue) != 1:
             team1 = self.matchupQueue.pop(0)
             team2 = self.matchupQueue.pop(0)
             teamMatchup = Matchup(team1,team2)
-            winner = teamMatchup.randomForestRegressor(2019)
+            winner = teamMatchup.random_forest_regressor(2019)
             self.matchupQueue.append(winner)
             self.matchupList.append(winner)
             print("{0} played {1} and the winner is: {2}".format(team1.get_team_name().replace(" NCAA","").replace(" ","-"),team2.get_team_name().replace(" NCAA","").replace(" ","-"),winner.get_team_name().replace(" NCAA","").replace(" ","-")))
 
 
-    def getBracket(self):
+    def get_bracket(self):
         name_list=[]
         for i in range(len(self.matchupList)):
             name_list.append(self.matchupList[i].get_team_name().replace(" NCAA",""))
