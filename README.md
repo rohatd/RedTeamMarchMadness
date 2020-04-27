@@ -12,21 +12,21 @@ To run the application,  the server needs to be started. First, activate the vir
  To install these packages, use the following commands: 
 
 
-$ pip install sklearn 
+  $ pip install sklearn 
 
-$ pip install sportsreference
+  $ pip install sportsreference
 
-$ pip install pandas 
+  $ pip install pandas 
 
 
 To start the server on Unix, Linux or macOS, use the following commands
 
 
-$ export FLASK_APP=marchMadness.py
+  $ export FLASK_APP=marchMadness.py
 
-$ FLASK_DEBUG=1
+  $ FLASK_DEBUG=1
 
-$ python marchMadness.py
+  $ python marchMadness.py
 
 
 If using Windows, use ‘set’ instead of ‘export’.
