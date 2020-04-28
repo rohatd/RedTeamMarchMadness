@@ -1,3 +1,9 @@
+"""Team Module
+
+  Attributes:
+    team_vocab (dict): vocabulary for team data
+    coach_vocab (dict): vocabulary for coach data
+"""
 team_vocab = {  "Rk_x" : "Rank",
                "School" : "School",
                "G_x" : "Total Games",
@@ -52,8 +58,23 @@ coach_vocab = { "Coach" : "Coach",
                "Chmp.1" : "Total Career Championships"}
 
 class Team:
+    """Team class
+
+
+    Args:
+      year (str): season year
+      team_data (dict): dictionary of team data
+      coach_data (dict): dictionary of team's coach data
+
+    Attributes:
+      year (int): season year
+      team_data (dict): dictionary of team data
+      coach_data (dict): dictionary of team's coach data      
+    """
+
 
     def __init__(self, year, team_data, coach_data):
+        """initializes team"""
         self.year = year
         # team_data is a row from our DF
         self.team_data = team_data
@@ -61,22 +82,27 @@ class Team:
 
     # Getters
     def get_team_name(self):
+        """return (str) team name"""
         return self.team_data['School']
 
     def get_year(self):
+        """return (str) season year"""
         return self.year
 
     def get_coach(self):
+        """return coach name (str)"""
         return self.coach_data['Coach']
 
     def get_coach_data(self):
+        """return coach data (dict)"""
         return self.coach_data
 
     def num_games(self):
+        """return team's number of games (str)"""
         return self.team_data['G_x']
 
     def num_wins(self, param="overall"):
-        # Returns number of wins based on parameter.
+        """Returns number of wins based on parameter."""
         param = param.lower()
         res = -1
         if param == "overall":
@@ -92,7 +118,7 @@ class Team:
         return res
 
     def num_losses(self, param="overall"):
-        # Returns number of losses based on parameter.
+        """Returns number of losses based on parameter"""
         param = param.lower()
         res = -1
         if param == "overall":
@@ -108,13 +134,19 @@ class Team:
         return res
 
     def get_attribute(self, param):
-        # Argument 'param' should be a string of an attribute name.
+        """returns attribute
+
+        args: 
+          param (str): attribute name
+        
+        """
         val = self.team_data[param]
         if isinstance(val, float):
             val = '%.3f'%(val)
         return str(val)
 
     def get_coach_attribute(self, param):
+        """ returns coach attribute"""
         val = self.coach_data[param]
         if isinstance(val, float):
             val = '%.3f'%(val)

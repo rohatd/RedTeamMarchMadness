@@ -1,17 +1,27 @@
-from flask import Flask, render_template, url_for, request, jsonify
+"""marchMadness Module
+
+    connector of front end to backend
+    extracts data using seasonData module
+
+    Attributes:
+        app (flask): flask app to run server
+        SD (seasonData): seasonData dataframe
+"""
+import json
+from flask import Flask, render_template, request, jsonify
 from seasondata import *
 from bracket import *
 from collections import deque
-import json
 
 app = Flask(__name__)
-SD =None
-B = None 
+SD = None
+B = None
 
 
 # Request Handling
 @app.route('/api/init/', methods=["GET", "POST"])
 def init_sd():
+    """initializes seasonData object"""
     # Stores SeasonData object in global var SD
     res = "SD load failure"
     global SD
@@ -27,156 +37,179 @@ def init_sd():
 @app.route("/")
 @app.route("/home")
 def home():
-	return render_template('homepage.html')
+    """renders homepage"""
+    return render_template('homepage.html')
 
 @app.route("/team-compare")
-def teamCompare():
-	return render_template('teamCompare.html')
+def team_compare():
+    """renders team compare page"""
+    return render_template('teamCompare.html')
 
 @app.route("/generate-bracket")
-def generateBracket():
+def generate_bracket():
+    """renders generate bracket page"""
 
-	teams = []
-	file = open("bracket.txt", 'r')
-	for l in file:
-		teams.append(l.strip())
-		
-	# global B
-	# try:
-	# 	B = Bracket(teamList)
-	# except: 
-	# 	print("bracket: something went wrong.")
+    teams = []
+    file = open("bracket.txt", 'r')
+    for line in file:
+        teams.append(line.strip())
+    # global B
+    # try:
+    #   B = Bracket(teamList)
+    # except:
+    #   print("bracket: something went wrong.")
 
-
-	# teams = B.getBracket()
-	#print(teams)
-	return render_template('generateBracket.html', teams= teams)
+    # teams = B.getBracket()
+    #print(teams)
+    return render_template('generateBracket.html', teams=teams)
 
 @app.route("/stats")
 def stats():
-	return render_template('stats.html')
+    """renders stats page"""
+    return render_template('stats.html')
 
 
 @app.route('/api/message/', methods=["POST"])
 def main_interface():
-	input = request.get_json()
-	print("Message received:", input, type(input))
+    """team comparison query handler
 
-	# Formulate a fake response.  Somehow connect this to an actual
-	# Team object request; look at architecture
-	global SD
-	teamName = input["message"]
-	try:
-		team = SD.get_team(teamName)
-	except:
-		return jsonify({"/api/message": "team name failed to load"})
-	response = {}
-	response["team"] = str(teamName)
-	response["year"] = str(team.get_year())
-	response["coach"] = str(team.get_coach())
-	response["numGames"] = str(team.num_games())
-	response["numWins"] = str(team.num_wins())
-	response["numLosses"] = str(team.num_losses())
+    handlers inputted teams from user
+    extracts stats for team and displays them
 
-	response["homeWins"] = str(team.get_attribute("W.2_x"))
-	response["awayWins"] = str(team.get_attribute("W.3_x"))
-	response["rating"] = str(team.get_attribute("SRS_x"))
-	response["w_l_p"] = str(team.get_attribute("W-L%_x"))
-	return jsonify(response)
+    return:
+        response (json)
+    """
+    input = request.get_json()
+    print("Message received:", input, type(input))
+
+    # Formulate a fake response.  Somehow connect this to an actual
+    # Team object request; look at architecture
+    global SD
+    team_name = input["message"]
+    try:
+        team = SD.get_team(team_name)
+    except:
+        return jsonify({"/api/message": "team name failed to load"})
+    response = {}
+    response["team"] = str(team_name)
+    response["year"] = str(team.get_year())
+    response["coach"] = str(team.get_coach())
+    response["numGames"] = str(team.num_games())
+    response["numWins"] = str(team.num_wins())
+    response["numLosses"] = str(team.num_losses())
+
+    response["homeWins"] = str(team.get_attribute("W.2_x"))
+    response["awayWins"] = str(team.get_attribute("W.3_x"))
+    response["rating"] = str(team.get_attribute("SRS_x"))
+    response["w_l_p"] = str(team.get_attribute("W-L%_x"))
+    return jsonify(response)
 
 @app.route('/api/compare/', methods=["POST"])
 def compare():
-	input = request.get_json()
-	print("Message received:", input, type(input))
+    """compares two teams based on stats
 
-	global SD
-	t1 = input["message1"]
-	t2 = input["message2"]
-	teamName1 = t1[6:]
-	teamName2 = t2[6:]
+    return:
+        response (json) 
+    """
+    input = request.get_json()
+    print("Message received:", input, type(input))
 
-	try:
-		team1 = SD.get_team(teamName1)
-		team2 = SD.get_team(teamName2)
+    global SD
+    t_1 = input["message1"]
+    t_2 = input["message2"]
+    team_name_1 = t_1[6:]
+    team_name_2 = t_2[6:]
 
-	except:
-		return jsonify({"/api/compare": "team name failed to load"})
-	response1 = {}
+    try:
+        team_1 = SD.get_team(team_name_1)
+        team_2 = SD.get_team(team_name_2)
 
-	print("OKAY")
-	response1["numWins"] = str(team1.num_wins())
-	response1["homeWins"] = str(team1.get_attribute("W.2_x"))
-	response1["awayWins"] = str(team1.get_attribute("W.3_x"))
-	response1["rating"] = str(team1.get_attribute("SRS_x"))
-	response1["w_l_p"] = str(team1.get_attribute("W-L%_x"))
+    except:
+        return jsonify({"/api/compare": "team name failed to load"})
+    response_1 = {}
 
-	response1["numWins2"] = str(team2.num_wins())
-	response1["homeWins2"] = str(team2.get_attribute("W.2_x"))
-	response1["awayWins2"] = str(team2.get_attribute("W.3_x"))
-	response1["rating2"] = str(team2.get_attribute("SRS_x"))
-	response1["w_l_p2"] = str(team2.get_attribute("W-L%_x"))
+    response_1["numWins"] = str(team_1.num_wins())
+    response_1["homeWins"] = str(team_1.get_attribute("W.2_x"))
+    response_1["awayWins"] = str(team_1.get_attribute("W.3_x"))
+    response_1["rating"] = str(team_1.get_attribute("SRS_x"))
+    response_1["w_l_p"] = str(team_1.get_attribute("W-L%_x"))
 
-
-	response = {}
-	if int(response1["homeWins2"]) > int(response1["homeWins"]):
-		response["homeWins"] = teamName2
-	else:
-		response["homeWins"] = teamName1 
-
-	if int(response1["awayWins2"]) > int(response1["awayWins"]):
-		response["awayWins"] = teamName2
-	else:
-		response["awayWins"] = teamName1 
-
-	if float(response1["rating2"]) > float(response1["rating"]):
-		response["rating"] = teamName2
-	else:
-		response["rating"] = teamName1 
-
-	if float(response1["w_l_p2"]) > float(response1["w_l_p"]):
-		response["w_l_p"] = teamName2
-	else:
-		response["w_l_p"] = teamName1 
+    response_1["numWins2"] = str(team_2.num_wins())
+    response_1["homeWins2"] = str(team_2.get_attribute("W.2_x"))
+    response_1["awayWins2"] = str(team_2.get_attribute("W.3_x"))
+    response_1["rating2"] = str(team_2.get_attribute("SRS_x"))
+    response_1["w_l_p2"] = str(team_2.get_attribute("W-L%_x"))
 
 
-	print(response)
-	return jsonify(response)
+    response = {}
+    if int(response_1["homeWins2"]) > int(response_1["homeWins"]):
+        response["homeWins"] = team_name_2
+    else:
+        response["homeWins"] = team_name_1
+
+    if int(response_1["awayWins2"]) > int(response_1["awayWins"]):
+        response["awayWins"] = team_name_2
+    else:
+        response["awayWins"] = team_name_1
+
+    if float(response_1["rating2"]) > float(response_1["rating"]):
+        response["rating"] = team_name_2
+    else:
+        response["rating"] = team_name_1
+
+    if float(response_1["w_l_p2"]) > float(response_1["w_l_p"]):
+        response["w_l_p"] = team_name_2
+    else:
+        response["w_l_p"] = team_name_1
+
+
+    print(response)
+    return jsonify(response)
 
 
 
 @app.route('/api/get-stats/', methods=["POST"])
-def getStats():
-	input = request.get_json()
-	query = input["query"]
-	print("Stats query received:", input)
-	"""
-	# Differentiate between a query for season, or team (TODO)
-	if any(char.isdigit() for char in query):
-		# If query contains digits, probably a season year query, e.g. "2019"
+def get_stats():
+    """handles stats query
+    
+    retrieves stats for user inputted team
+    Displays them to front end
 
-	else:
-		"""
-	# Otherwise, a team name
-	try:
-		team = SD.get_team(query)
-	except:
-		return jsonify({"/api/get-stats": "Team name query failed to load."})
-	return jsonify(team.stats_json())
+    return:
+        response (json)
+    """
+    input = request.get_json()
+    query = input["query"]
+    print("Stats query received:", input)
+    """
+    # Differentiate between a query for season, or team (TODO)
+    if any(char.isdigit() for char in query):
+        # If query contains digits, probably a season year query, e.g. "2019"
+
+    else:
+        """
+    # Otherwise, a team name
+    try:
+        team = SD.get_team(query)
+    except:
+        return jsonify({"/api/get-stats": "Team name query failed to load."})
+    return jsonify(team.stats_json())
 
 
 @app.after_request
 def add_headers(response):
-	response.headers.add('Access-Control-Allow-Origin', '*')
-	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-	return response
+    """handles response headers
+    args:
+        response: json
 
-# @app.route('/api/get-teams', methods=["POST"])
-# def getTeams():
-# 	try:
-# 		SD.getTeams()
-# 	except:
-# 		return jsonify({"/api/get-teams": "Fail"})
+    returns:
+        repsonse: json
+    """
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    return response
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+    """main program to run application"""
+    app.run(debug=True)
