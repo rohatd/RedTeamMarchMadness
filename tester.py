@@ -58,16 +58,16 @@ def test():
     testBracket = Bracket(teamList)
     
     #test evaluate bracket
-    testBracket.evaluateBracket()
+    testBracket.evaluate_bracket()
 
 
-    orderedBracket = testBracket.getBracket()
+    orderedBracket = testBracket.get_bracket()
 
-    f = open("bracket.txt", "a")
-    for i in orderedBracket:
-        f.write(i + "\n")
+    # f = open("bracket.txt", "a")
+    # for i in orderedBracket:
+    #     f.write(i + "\n")
 
-    f.close()
+    # f.close()
 
 
     #test return list of front end bracket input
